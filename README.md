@@ -1,6 +1,6 @@
-# 30dayMapChallenge
+# 30 Day Map Challenge
 
-Maps created as part of [Topi Tjukanov's #30dayMapChallenge](https://twitter.com/tjukanov/status/1190170716408184832).
+Maps created as part of [Topi Tjukanov's #30dayMapChallenge](https://twitter.com/tjukanov/status/1187713840550744066).
 
 All produced using [LitVis](https://github.com/gicentre/litvis), combining markdown with [Vega-Lite](https://vega.github.io/vega-lite)
 
