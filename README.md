@@ -4,15 +4,35 @@ Maps created as part of [Topi Tjukanov's #30dayMapChallenge](https://twitter.com
 
 All produced using [LitVis](https://github.com/gicentre/litvis), combining markdown with [Vega-Lite](https://vega.github.io/vega-lite)
 
-| Day | Theme                     | Day | Theme                | Day | Theme                       |
-| --- | ------------------------- | --- | -------------------- | --- | --------------------------- |
-| 1   | [points](d01Points.md)    | 11  | [elevation](d11.md)  | 21  | [environment](d21.md)       |
-| 2   | [lines](d02Lines.md)      | 12  | [movement](d12.md)   | 22  | [built environment](d22.md) |
-| 3   | [polygons](d03.md)        | 13  | [tracks](d13.md)     | 23  | [population](d23.md)        |
-| 4   | [hexagons](d04.md)        | 14  | [boundaries](d14.md) | 24  | [statistics](d24.md)        |
-| 5   | [raster](d05.md)          | 15  | [names](d15.md)      | 25  | [climate](d25.md)           |
-| 6   | [blue](d06.md)            | 16  | [places](d16.md)     | 26  | [hydrology](d26.md)         |
-| 7   | [red](d07.md)             | 17  | [zones](d17.md)      | 27  | [resources](d27.md)         |
-| 8   | [green](d08.md)           | 18  | [globe](d18.md)      | 28  | [funny](d28.md)             |
-| 9   | [yellow](d09.md)          | 19  | [urban](d19.md)      | 29  | [experimental](d29.md)      |
-| 10  | [black and white](d10.md) | 20  | [rural](d20.md)      | 30  | [home](d30.md)              |
+| Day | Theme                  | Map                                                      |
+| --: | :--------------------- | :------------------------------------------------------- |
+|   1 | [points](d01Points.md) | [<img src="images/day01.png" width=50% />](d01Points.md) |
+|   2 | [lines ](d02Lines.md)  | [<img src="images/day02.png" width=50% />](d02Lines.md)  |
+|   3 | [polygons]             |                                                          |
+|   4 | [hexagons]             |                                                          |
+|   5 | [raster]               |                                                          |
+|   6 | [blue]                 |                                                          |
+|   7 | [red]                  |                                                          |
+|   8 | [green]                |                                                          |
+|   9 | [yellow]               |                                                          |
+|  10 | [black and white]      |                                                          |
+|  11 | [elevation]            |                                                          |
+|  12 | [movement]             |                                                          |
+|  13 | [tracks]               |                                                          |
+|  14 | [boundaries]           |                                                          |
+|  15 | [names]                |                                                          |
+|  16 | [places]               |                                                          |
+|  17 | [zones]                |                                                          |
+|  18 | [globe]                |                                                          |
+|  19 | [urban]                |                                                          |
+|  20 | [rural]                |                                                          |
+|  21 | [environment]          |                                                          |
+|  22 | [built environment]    |                                                          |
+|  23 | [population]           |                                                          |
+|  24 | [statistics]           |                                                          |
+|  25 | [climate]              |                                                          |
+|  26 | [hydrology]            |                                                          |
+|  27 | [resources]            |                                                          |
+|  28 | [funny]                |                                                          |
+|  29 | [experimental]         |                                                          |
+|  30 | [home]                 |                                                          |
