@@ -9,7 +9,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |   1 | [points](d01Points.md)     | [<img src="images/day01.png" width=50% />](d01Points.md)   |
 |   2 | [lines ](d02Lines.md)      | [<img src="images/day02.png" width=50% />](d02Lines.md)    |
 |   3 | [polygons](d03Polygons.md) | [<img src="images/day03.png" width=50% />](d03Polygons.md) |
-|   4 | [hexagons]                 |                                                            |
+|   4 | [hexagons](d04Hexagons.md) | [<img src="images/day04.png" width=50% />](d04Hexagons.md) |
 |   5 | [raster]                   |                                                            |
 |   6 | [blue]                     |                                                            |
 |   7 | [red]                      |                                                            |
