@@ -79,8 +79,8 @@ rasterWorld =
 
         positionEnc =
             encoding
-                << position X [ pName "row", pOrdinal, pAxis [] ]
-                << position Y [ pName "col", pOrdinal, pAxis [] ]
+                << position X [ pName "col", pOrdinal, pAxis [] ]
+                << position Y [ pName "row", pOrdinal, pAxis [] ]
                 << text [ tName "alpha3" ]
 
         seaSpec =
