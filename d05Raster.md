@@ -60,8 +60,8 @@ rasterWorld =
 
         seaData =
             dataFromColumns []
-                << dataColumn "col" (List.map (Tuple.first >> toFloat) gridLocations |> nums)
-                << dataColumn "row" (List.map (Tuple.second >> toFloat) gridLocations |> nums)
+                << dataColumn "row" (List.map (Tuple.first >> toFloat) gridLocations |> nums)
+                << dataColumn "col" (List.map (Tuple.second >> toFloat) gridLocations |> nums)
 
         colours =
             categoricalDomainMap
