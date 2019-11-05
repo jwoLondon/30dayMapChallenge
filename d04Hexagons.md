@@ -24,7 +24,7 @@ Voronoi diagram of (approximately) evenly distributed point set would provide an
 
 [project linework](http://www.projectlinework.org) provides some hexagonal basemaps that could be used.
 
-Or perhaps a more oblique reference to hexagons such as Benzine pollution?
+Or perhaps a more oblique reference to hexagons such as Benzene pollution?
 
 ## General Election 2017 Runners Up
 
