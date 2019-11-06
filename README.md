@@ -11,7 +11,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |   3 | [polygons](d03Polygons.md) | [<img src="images/day03.png" width=50% />](d03Polygons.md) |
 |   4 | [hexagons](d04Hexagons.md) | [<img src="images/day04.png" width=50% />](d04Hexagons.md) |
 |   5 | [raster](d05Raster.md)     | [<img src="images/day05.png" width=50% />](d05Raster.md)   |
-|   6 | [blue]                     |                                                            |
+|   6 | [blue](d06Blue.md)         | [<img src="images/day06.png" width=50% />](d06Blue.md)     |
 |   7 | [red]                      |                                                            |
 |   8 | [green]                    |                                                            |
 |   9 | [yellow]                   |                                                            |
