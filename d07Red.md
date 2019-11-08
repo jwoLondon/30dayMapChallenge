@@ -33,11 +33,11 @@ ruby -rcsv -e 'CSV.foreach(ARGV.shift) {|row| print row[2],"\t",row[8],"\t",row[
 2. Create filtered versions containing only names containing 'red', 'coch' and 'dearg':
 
 ```
-echo -e "name\tlongitude\tlatitude" >gbRedNames.tsv
+echo -e "name\teasting\tnorthing" >gbRedNames.tsv
 cat gbAllNames.tsv | grep  -i 'red' >>gbRedNames.tsv
-echo -e "name\tlongitude\tlatitude" >gbCochNames.tsv
+echo -e "name\teasting\tnorthing"  >gbCochNames.tsv
 cat gbAllNames.tsv | grep  -i 'coch' >>gbCochNames.tsv
-echo -e "name\tlongitude\tlatitude" >gbDeargNames.tsv
+echo -e "name\teasting\tnorthing" >gbDeargNames.tsv
 cat gbAllNames.tsv | grep  -i 'dearg' >>gbDeargNames.tsv
 ```
 
@@ -125,6 +125,138 @@ densityTest =
 
 It would appear that a list of 1.1 million names is too much for VegaLite to calculate in a reasonable length of time, so I've calculated the relative density externally in Java and saved the 10km grid square data as `gbRedDensity.csv`, `gbCochDensity.csv` and `gbDeargDensity.csv`.
 
+#### Java Relative Density Calculation
+
+Aggregate into 10km grid squares by rounding position coordinates. Implemented in [Processing](https://processing.org)
+
+```java
+import java.util.Map;
+
+HashMap<String, Float>density;
+float minEasting = 0;
+float minNorthing = 0;
+float maxEasting = 700000;
+float maxNorthing = 1240000;
+float maxDensity;
+int roundFactor = 10000;
+
+void setup()
+{
+  size(400, 650);
+  HashMap<String,Float>densityAll = buildDensity("gbAllNames.tsv");
+  HashMap<String,Float>densityRed = buildDensity("gbRedNames.tsv");
+  //HashMap<String,Float>densityRed = buildDensity("gbCochNames.tsv");
+  //HashMap<String,Float>densityRed = buildDensity("gbDeargNames.tsv");
+
+  density = new HashMap();
+
+  for (Map.Entry bin : densityRed.entrySet())
+  {
+    String posHash = (String)bin.getKey();
+    float fAll = (float)(densityAll.get(posHash));
+    float fRed = (float)(bin.getValue());
+
+    density.put(posHash,(fRed/fAll));
+  }
+  maxDensity = calcMaxDensity(density);
+
+  writeDensityFile(density,"gbRedDensity.csv");
+  //writeDensityFile(density,"gbCochDensity.csv");
+  //writeDensityFile(density,"gbDeargDensity.csv");
+}
+
+void draw()
+{
+  background(255);
+  noStroke();
+  for (Map.Entry bin : density.entrySet())
+  {
+    String[] pos = ((String)bin.getKey()).split(",");
+    int easting = Integer.parseInt(pos[0]);
+    int northing = Integer.parseInt(pos[1]);
+    float f = (float)bin.getValue();
+
+    float xPos = map(easting, minEasting, maxEasting, 50, width-50);
+    float yPos = map(northing, maxNorthing, minNorthing, 50, height-50);
+    fill(lerpColor(color(255, 255, 255), color(120, 0, 0), norm(f, 0, maxDensity)));
+    rect(xPos, yPos, 5.5, 5.5);
+  }
+
+  noLoop();
+}
+
+ArrayList<GeoName>readGeoNames(String fileName)
+{
+  ArrayList<GeoName> names = new ArrayList();
+  for (String line : loadStrings(fileName))
+  {
+    String[] tokens = line.split("\t");
+    names.add(new GeoName(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[0].trim()));
+  }
+  return names;
+}
+
+
+float calcMaxDensity(HashMap<String, Float>den)
+{
+  float maxDen = 0;
+  for (Float f : den.values())
+  {
+    maxDen = max(maxDen,f);
+  }
+  return maxDen;
+}
+
+
+HashMap<String, Float>buildDensity(String pointFilename)
+{
+  HashMap<String, Float> density = new HashMap();
+  for (GeoName name : readGeoNames(pointFilename))
+  {
+    int northing = floor(name.y / roundFactor) * roundFactor;
+    int easting = floor(name.x / roundFactor) * roundFactor;
+    String hash = easting+","+northing;
+    Float f = density.get(hash);
+    if (f == null)
+    {
+      density.put(hash, 1.0);
+    }
+    else
+    {
+      density.put(hash, (f+1));
+    }
+  }
+  return density;
+}
+
+void writeDensityFile(HashMap<String,Float>den, String fName)
+{
+  PrintWriter out = createWriter(fName);
+  out.println("easting,northing,density");
+  for (Map.Entry bin : den.entrySet())
+  {
+    out.println(bin.getKey()+","+bin.getValue());
+  }
+  out.flush();
+  out.close();
+}
+
+class GeoName
+{
+  float x,y;
+  String name;
+
+  GeoName(float x, float y, String name)
+  {
+    this.x = x;
+    this.y = y;
+    this.name = name;
+  }
+}
+```
+
+#### Elm-Vegalite specification
+
 ```elm {l}
 redMap : Spec
 redMap =
@@ -181,13 +313,26 @@ rMap colour tText =
                     , pAxis []
                     , pScale [ scZero False, scNice niFalse, scDomain (doNums [ -5000, 1240000 ]) ]
                     ]
-                << color [ mName "density", mQuant, mScale [ scScheme "reds" [ 1.4, 0.6 ] ], mLegend [] ]
+                << color
+                    [ mName "density"
+                    , mQuant
+                    , mScale [ scScheme "reds" [ 1.4, 0.6 ] ]
+                    , mLegend []
+                    ]
 
         redDensitySpec =
-            asSpec [ redDensityData, encDensity [], square [ maSize 49, maOpacity 1, maXOffset 3.5, maYOffset -3.5 ] ]
+            asSpec
+                [ redDensityData
+                , encDensity []
+                , square [ maSize 49, maOpacity 1, maXOffset 3.5, maYOffset -3.5 ]
+                ]
 
         coastSpec =
-            asSpec [ boundaryData, proj, geoshape [ maFilled False, maStrokeWidth 0.4, maStroke "rgb(205,0,0)" ] ]
+            asSpec
+                [ boundaryData
+                , proj
+                , geoshape [ maFilled False, maStrokeWidth 0.4, maStroke "rgb(205,0,0)" ]
+                ]
 
         pointEnc =
             encoding
@@ -205,14 +350,28 @@ rMap colour tText =
                     ]
 
         pointSpec1 =
-            asSpec [ redData, pointEnc [], circle [ maOpacity 1, maSize 9, maColor "#fee", maOpacity 0.01 ] ]
+            asSpec
+                [ redData
+                , pointEnc []
+                , circle [ maOpacity 1, maSize 9, maColor "#fee", maOpacity 0.01 ]
+                ]
 
         pointSpec2 =
-            asSpec [ redData, pointEnc [], circle [ maOpacity 0.7, maSize 0.2, maColor "#900" ] ]
+            asSpec
+                [ redData
+                , pointEnc []
+                , circle [ maOpacity 0.7, maSize 0.2, maColor "#900" ]
+                ]
     in
     toVegaLite
         [ cfg []
-        , title (String.toLower colour) [ tiColor "rgb(218,78,59)", tiFont "Fjalla One", tiFontSize 36, tiAnchor anStart, tiOffset -50 ]
+        , title (String.toLower colour)
+            [ tiColor "rgb(218,78,59)"
+            , tiFont "Fjalla One"
+            , tiFontSize 36
+            , tiAnchor anStart
+            , tiOffset -50
+            ]
         , background "rgb(25,0,0)"
         , width w
         , height h
