@@ -13,7 +13,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |   5 | [raster](d05Raster.md)     | [<img src="images/day05.png" width=50% />](d05Raster.md)   |
 |   6 | [blue](d06Blue.md)         | [<img src="images/day06.png" width=50% />](d06Blue.md)     |
 |   7 | [red](d07Red.md)           | [<img src="images/day07.png" width=50% />](d07Red.md)      |
-|   8 | [green]                    |                                                            |
+|   8 | [green](d08Green.md)       | [<img src="images/day08.png" width=50% />](d08Green.md)    |
 |   9 | [yellow]                   |                                                            |
 |  10 | [black and white]          |                                                            |
 |  11 | [elevation]                |                                                            |
