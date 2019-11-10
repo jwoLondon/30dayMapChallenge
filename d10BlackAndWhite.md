@@ -90,7 +90,7 @@ densityMap showDay =
         in daylight and"""
 
             else
-                """world record for the furthest cycled in a a year.
+                """world record for the furthest cycled in a year.
             75,065 miles and hadn't been beaten in 75 years.
 
       year, this is where Steve spent his time riding
