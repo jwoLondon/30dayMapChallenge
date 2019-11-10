@@ -36,9 +36,7 @@ mapshaper GB_GreenspaceSite.shp \
   -o format=topojson londonGreenCentroids.json
 ```
 
-3. Generate `londonBoroughCentroids.csv` from `londonBoroughs.json` and manually add grid positions based on the [After The Flood grid layout](https://aftertheflood.com/projects/future-cities-catapult/).
-
-4. Aggregate greenspace areas spatially grouping by borough and store total borough area, GSSCode and green area in a csv file:
+3. Aggregate greenspace areas spatially grouping by borough and store total borough GSSCode and green area in a csv file:
 
 ```
 mapshaper londonBoroughs.json \
@@ -125,8 +123,11 @@ greenMap =
             [ tiAnchor anEnd
             , tiOrient siBottom
             , tiFontSize (gSize / 2.9)
-            , tiOffset (-gSize / 3.8)
+            , tiOffset (-gSize / 2.1)
             , tiFont "Fjalla One"
+            , tiSubtitle "Proportion of land area devoted to open access greenspace. "
+            , tiSubtitleFontSize (gSize / 7.5)
+            , tiSubtitleColor "rgb(80,150,40)"
             ]
         , data
         , trans []
@@ -138,4 +139,4 @@ greenMap =
         ]
 ```
 
-![day 8](images/day08.png)
+![day 8](images/day08.jpg)
