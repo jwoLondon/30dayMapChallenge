@@ -64,7 +64,7 @@ emojiMap =
             transform
                 << filter (fiExpr "slice(datum.GRIDCODE,0,5) != '16055' && slice(datum.GRIDCODE,-4) > '1855'")
                 << calculateAs "round(datum.ANN_DNI)" "dni"
-                << calculateAs "datum.dni == 3 ? '\u{1F915}' : datum.dni == 4 ? '🙂' : datum.dni == 5 || datum.dni == 6 ? '😍':  datum.dni == 7 ? '😡'  : '👹'" "cat"
+                << calculateAs "{3: '\u{1F915}', 4: '🙂', 5: '😍', 6:'😍',7:'😡',8:'👹',9:'👹'}[datum.dni]" "cat"
 
         proj =
             projection [ prType albersUsa ]
@@ -79,7 +79,16 @@ emojiMap =
         [ cfg []
         , width w
         , height h
-        , title "Phew, what a scorcher!" [ tiFont "Alfa Slab One", tiFontWeight Normal, tiFontSize 60, tiColor "rgb(238,161,20)", tiOffset -20 ]
+        , title "Phew, what a scorcher!"
+            [ tiFont "Alfa Slab One"
+            , tiFontWeight Normal
+            , tiFontSize 60
+            , tiColor "rgb(238,161,20)"
+            , tiOffset -30
+            , tiSubtitle "Direct Normal Irradiance, indicating potential for solar energy production"
+            , tiSubtitleColor "rgb(238,161,20)"
+            , tiSubtitleFontSize 20
+            ]
         , data
         , trans []
         , proj
