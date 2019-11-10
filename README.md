@@ -6,15 +6,15 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 
 | Day | Theme                      | Map                                                        |
 | --: | :------------------------- | :--------------------------------------------------------- |
-|   1 | [points](d01Points.md)     | [<img src="images/day01.png" width=30% />](d01Points.md)   |
+|   1 | [points](d01Points.md)     | [<img src="images/day01.jpg" width=30% />](d01Points.md)   |
 |   2 | [lines ](d02Lines.md)      | [<img src="images/day02.png" width=30% />](d02Lines.md)    |
-|   3 | [polygons](d03Polygons.md) | [<img src="images/day03.png" width=30% />](d03Polygons.md) |
-|   4 | [hexagons](d04Hexagons.md) | [<img src="images/day04.png" width=30% />](d04Hexagons.md) |
+|   3 | [polygons](d03Polygons.md) | [<img src="images/day03.jpg" width=30% />](d03Polygons.md) |
+|   4 | [hexagons](d04Hexagons.md) | [<img src="images/day04.jpg" width=30% />](d04Hexagons.md) |
 |   5 | [raster](d05Raster.md)     | [<img src="images/day05.png" width=30% />](d05Raster.md)   |
-|   6 | [blue](d06Blue.md)         | [<img src="images/day06.png" width=30% />](d06Blue.md)     |
-|   7 | [red](d07Red.md)           | [<img src="images/day07.png" width=30% />](d07Red.md)      |
-|   8 | [green](d08Green.md)       | [<img src="images/day08.png" width=30% />](d08Green.md)    |
-|   9 | [yellow](d09Yellow.md)     | [<img src="images/day09.png" width=30% />](d09Yellow.md)   |
+|   6 | [blue](d06Blue.md)         | [<img src="images/day06.jpg" width=30% />](d06Blue.md)     |
+|   7 | [red](d07Red.md)           | [<img src="images/day07.jpg" width=30% />](d07Red.md)      |
+|   8 | [green](d08Green.md)       | [<img src="images/day08.jpg" width=30% />](d08Green.md)    |
+|   9 | [yellow](d09Yellow.md)     | [<img src="images/day09.jpg" width=30% />](d09Yellow.md)   |
 |  10 | [black and white]          |                                                            |
 |  11 | [elevation]                |                                                            |
 |  12 | [movement]                 |                                                            |

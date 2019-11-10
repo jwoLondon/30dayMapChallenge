@@ -92,4 +92,4 @@ squaresMap =
     toVegaLite [ cfg [], width 1300, height 1300, layer [ footwaySpec, buildingSpec ] ]
 ```
 
-![day 3](images/day03.png)
+![day 3](images/day03.jpg)

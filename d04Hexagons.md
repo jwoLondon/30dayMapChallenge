@@ -43,7 +43,7 @@ Add a coloured dot to show winning party.
 
 Vega-Lite doesn't have a direct voronoi transform so instead we use the centroids of each hex constituency and create a custom hex shape scaled as a proportion of the map width. To create a hex grid we need to offset every other row by half the hex width, which is easily achieved with a transform calculation.
 
-```elm {v interactive}
+```elm {l}
 map1 : Spec
 map1 =
     let
@@ -150,4 +150,4 @@ map1 =
         ]
 ```
 
-![day 4](images/day04.png)
+![day 4](images/day04.jpg)

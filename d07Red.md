@@ -380,4 +380,4 @@ rMap colour tText =
         ]
 ```
 
-![day 7](images/day07.png)
+![day 7](images/day07.jpg)

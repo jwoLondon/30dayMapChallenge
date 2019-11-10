@@ -97,4 +97,4 @@ emojiMap =
         ]
 ```
 
-![day 9](images/day09.png)
+![day 9](images/day09.jpg)

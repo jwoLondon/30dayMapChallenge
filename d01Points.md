@@ -65,7 +65,7 @@ As above but for the whole London region (from Guildford in SW to Ingatestone an
 - Design as if disco album cover
 - Give each point a glow effect by overlaying a smaller point symbol over a larger translucent one.
 
-```elm {l v}
+```elm {l}
 pointMap2 : Spec
 pointMap2 =
     let
@@ -118,4 +118,4 @@ pointMap2 =
         ]
 ```
 
-![day 1](images/day01.png)
+![day 1](images/day01.jpg)

@@ -121,4 +121,4 @@ streamTopologyMap =
         ]
 ```
 
-![day 6](images/day06.png)
+![day 6](images/day06.jpg)
