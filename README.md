@@ -18,7 +18,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |  10 | [black and white](d10BlackAndWhite.md) | [<img src="images/day10.jpg" width=30% />](d10BlackAndWhite.md) |
 |  11 | [elevation](d11Elevation.md)           | [<img src="images/day11.jpg" width=30% />](d11Elevation.md)     |
 |  12 | [movement](d12Movement.md)             | [<img src="images/day12.jpg" width=30% />](d12Movement.md)      |
-|  13 | [tracks]                               |                                                                 |
+|  13 | [tracks](d13Tracks.md)                 | [<img src="images/day13.png" width=30% />](d13Tracks.md)        |
 |  14 | [boundaries]                           |                                                                 |
 |  15 | [names]                                |                                                                 |
 |  16 | [places]                               |                                                                 |
