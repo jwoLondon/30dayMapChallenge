@@ -1,0 +1,1 @@
+{"type":"Topology","arcs":[[[0,0],[0,100],[100,0],[0,-100],[-100,0]]],"transform":{"scale":[0.007104999999999999,0.0023689999999999857],"translate":[-0.5705,51.230599999999995]},"objects":{"londonRegionLines":{"type":"GeometryCollection","geometries":[{"type":"LineString","arcs":[0],"properties":{"RANK":0,"TYPE":"outer"}}]}}}
