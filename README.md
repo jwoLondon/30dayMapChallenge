@@ -20,4 +20,4 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |  12 | [movement](d12Movement.md)             | [<img src="images/day12.jpg" width=30% />](d12Movement.md)      | 27  | [resources]         |     |
 |  13 | [tracks](d13Tracks.md)                 | [<img src="images/day13.png" width=30% />](d13Tracks.md)        | 28  | [funny]             |     |
 |  14 | [boundaries](d14Boundaries.md)         | [<img src="images/day14.jpg" width=30% />](d14Boundaries.md)    | 29  | [experimental]      |     |
-|  15 | [names]                                |                                                                 | 30  | [home]              |     |
+|  15 | [names](d15Names.md)                   | [<img src="images/day15.png" width=30% />](d15Names.md)         | 30  | [home]              |     |
