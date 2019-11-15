@@ -236,14 +236,14 @@ usMigrationODMap =
                 << position X
                     [ pName "col"
                     , pQuant
-                    , pScale [ scNice niFalse, scZero False, scDomain (doNums [ 0, 10 ]) ]
+                    , pScale [ scNice niFalse, scZero False ]
                     , pAxis []
                     ]
                 << position Y
                     [ pName "row"
                     , pQuant
                     , pSort [ soDescending ]
-                    , pScale [ scNice niFalse, scZero False, scDomain (doNums [ -1.5, 8.5 ]) ]
+                    , pScale [ scNice niFalse, scZero False ]
                     , pAxis []
                     ]
 
