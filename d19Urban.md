@@ -20,13 +20,13 @@ _This document best viewed in [litvis](https://github.com/gicentre/litvis)_
 
 Would like to ensure that 'urban' is distinct from 'built environment'. Could look at various attempts to quantify and classify 'urban', perhaps emphasising it's fuzzy boundaries. But have limited time, so this might have to wait for another time.
 
-What recorded features most characterise urban areas? Browse [OSM feature sets](https://wiki.openstreetmap.org/wiki/Map_Features). Would be interesting to map our clustering after death. Cities of the dead?
+What recorded features most characterise urban areas? Browse [OSM map features](https://wiki.openstreetmap.org/wiki/Map_Features). Would be interesting to map our clustering after death. Cities of the dead?
 
 ## Data Preparation
 
 Use overpass to select cemeteries, crematoria, etc. This allows larger areas to be considered without having to download entire OSM dataset for a region.
 
-1. Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu)""
+1. Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu).
 
 ```
 ( area[name="United Kingdom"]; )->.a;
