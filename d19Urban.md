@@ -18,25 +18,13 @@ _This document best viewed in [litvis](https://github.com/gicentre/litvis)_
 
 ## Initial Thoughts
 
-Cities of the dead?
+Would like to ensure that 'urban' is distinct from 'built environment'. Could look at various attempts to quantify and classify 'urban', perhaps emphasising it's fuzzy boundaries. But have limited time, so this might have to wait for another time.
+
+What recorded features most characterise urban areas? Browse [OSM feature sets](https://wiki.openstreetmap.org/wiki/Map_Features). Would be interesting to map our clustering after death. Cities of the dead?
 
 ## Data Preparation
 
-Use overpass to select cemeteries, crematoria, etc. See https://wiki.openstreetmap.org/wiki/Map_Features for lists of other possible filters.
-
-```
-amenity: grave_yard
-emenity: crematorium
-landuse: cemetery
-```
-
-Can use Overpass API for selections of attributes from a larger geographic region:
-
-https://wiki.openstreetmap.org/wiki/Overpass_API
-https://wiki.openstreetmap.org/wiki/Overpass_API/Language_Guide
-https://overpass-turbo.eu
-
-### Overpass API Queries
+Use overpass to select cemeteries, crematoria, etc. This allows larger areas to be considered without having to download entire OSM dataset for a region.
 
 1. Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu)""
 
