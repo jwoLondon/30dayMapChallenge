@@ -26,7 +26,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |  18 | [globe](d18Globe.md)                   | [<img src="images/day18.jpg" width=30% />](d18Globe.md)         |
 |  19 | [urban](d19Urban.md)                   | [<img src="images/day19.jpg" width=30% />](d19Urban.md)         |
 |  20 | [rural](d20Rural,md)                   | [<img src="images/day20.jpg" width=30% />](d20Rural.md)         |
-|  21 | [environment](d21Environment,md)       | [<img src="images/day21.jpg" width=30% />](d21Environment.md)   |
+|  21 | [environment](d21Environment.md)       | [<img src="images/day21.jpg" width=30% />](d21Environment.md)   |
 |  22 | [built environment]                    |                                                                 |
 |  23 | [population]                           |                                                                 |
 |  24 | [statistics]                           |                                                                 |
