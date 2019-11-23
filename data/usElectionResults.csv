@@ -1,0 +1,52 @@
+fips,shortName,state,1972,1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016
+1,AL,Alabama,R,D,R,R,R,R,R,R,R,R,R,R
+2,AK,Alaska,R,R,R,R,R,R,R,R,R,R,R,R
+4,AZ,Arizona,R,R,R,R,R,R,D,R,R,R,R,R
+5,AR,Arkansas,R,D,R,R,R,D,D,R,R,R,R,R
+6,CA,California,R,R,R,R,R,D,D,D,D,D,D,D
+8,CO,Colorado,R,R,R,R,R,D,R,R,R,D,D,D
+9,CT,Connecticut,R,R,R,R,R,D,D,D,D,D,D,D
+10,DE,Delaware,R,D,R,R,R,D,D,D,D,D,D,D
+11,DC,District of Columbia,D,D,D,D,D,D,D,D,D,D,D,D
+12,FL,Florida,R,D,R,R,R,R,D,R,R,D,D,R
+13,GA,Georgia,R,D,D,R,R,D,R,R,R,R,R,R
+15,HI,Hawaii,R,D,D,R,D,D,D,D,D,D,D,D
+16,ID,Idaho,R,R,R,R,R,R,R,R,R,R,R,R
+17,IL,Illinois,R,R,R,R,R,D,D,D,D,D,D,D
+18,IN,Indiana,R,R,R,R,R,R,R,R,R,D,R,R
+19,IA,Iowa,R,R,R,R,D,D,D,D,R,D,D,R
+20,KS,Kansas,R,R,R,R,R,R,R,R,R,R,R,R
+21,KY,Kentucky,R,D,R,R,R,D,D,R,R,R,R,R
+22,LA,Louisiana,R,D,R,R,R,D,D,R,R,R,R,R
+23,ME,Maine,R,R,R,R,R,D,D,D,D,D,D,D
+24,MD,Maryland,R,D,D,R,R,D,D,D,D,D,D,D
+25,MA,Massachusetts,D,D,R,R,D,D,D,D,D,D,D,D
+26,MI,Michigan,R,R,R,R,R,D,D,D,D,D,D,R
+27,MN,Minnesota,R,D,D,D,D,D,D,D,D,D,D,D
+28,MS,Mississippi,R,D,R,R,R,R,R,R,R,R,R,R
+29,MO,Missouri,R,D,R,R,R,D,D,R,R,R,R,R
+30,MT,Montana,R,R,R,R,R,D,R,R,R,R,R,R
+31,NE,Nebraska,R,R,R,R,R,R,R,R,R,R,R,R
+32,NV,Nevada,R,R,R,R,R,D,D,R,R,D,D,D
+33,NH,New Hampshire,R,R,R,R,R,D,D,R,D,D,D,D
+34,NJ,New Jersey,R,R,R,R,R,D,D,D,D,D,D,D
+35,NM,New Mexico,R,R,R,R,R,D,D,D,R,D,D,D
+36,NY,New York,R,D,R,R,D,D,D,D,D,D,D,D
+37,NC,North Carolina,R,D,R,R,R,R,R,R,R,D,R,R
+38,ND,North Dakota,R,R,R,R,R,R,R,R,R,R,R,R
+39,OH,Ohio,R,D,R,R,R,D,D,R,R,D,D,R
+40,OK,Oklahoma,R,R,R,R,R,R,R,R,R,R,R,R
+41,OR,Oregon,R,R,R,R,D,D,D,D,D,D,D,D
+42,PA,Pennsylvania,R,D,R,R,R,D,D,D,D,D,D,R
+44,RI,Rhode Island,R,D,D,R,D,D,D,D,D,D,D,D
+45,SC,South Carolina,R,D,R,R,R,R,R,R,R,R,R,R
+46,SD,South Dakota,R,R,R,R,R,R,R,R,R,R,R,R
+47,TN,Tennessee,R,D,R,R,R,D,D,R,R,R,R,R
+48,TX,Texas,R,D,R,R,R,R,R,R,R,R,R,R
+49,UT,Utah,R,R,R,R,R,R,R,R,R,R,R,R
+50,VT,Vermont,R,R,R,R,R,D,D,D,D,D,D,D
+51,VA,Virginia,R,R,R,R,R,R,R,R,R,D,D,D
+53,WA,Washington,R,R,R,R,D,D,D,D,D,D,D,D
+54,WV,West Virginia,R,D,D,R,D,D,D,R,R,R,R,R
+55,WI,Wisconsin,R,D,R,R,D,D,D,D,D,D,D,R
+56,WY,Wyoming,R,R,R,R,R,R,R,R,R,R,R,R

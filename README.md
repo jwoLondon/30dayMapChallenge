@@ -28,7 +28,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |  20 | [rural](d20Rural,md)                        | [<img src="images/day20.jpg" width=30% />](d20Rural.md)            |
 |  21 | [environment](d21Environment.md)            | [<img src="images/day21.jpg" width=30% />](d21Environment.md)      |
 |  22 | [built environment](d22BuiltEnvironment.md) | [<img src="images/day22.jpg" width=30% />](d22BuiltEnvironment.md) |
-|  23 | [population]                                |                                                                    |
+|  23 | [population](d23Population.md)              | [<img src="images/day23.jpg" width=30% />](d23Population.md)       |
 |  24 | [statistics]                                |                                                                    |
 |  25 | [climate]                                   |                                                                    |
 |  26 | [hydrology]                                 |                                                                    |
