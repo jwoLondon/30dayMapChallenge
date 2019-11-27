@@ -32,7 +32,7 @@ All produced using [LitVis](https://github.com/gicentre/litvis), combining markd
 |  24 | [statistics](d24Statistics.md)              | [<img src="images/day24.jpg" width=30% />](d24Statistics.md)       |
 |  25 | [climate](d25Climate.md)                    | [<img src="images/day25.jpg" width=30% />](d25Climate.md)          |
 |  26 | [hydrology](d26Hydrology.md)                | [<img src="images/day26.jpg" width=30% />](d26Hydrology.md)        |
-|  27 | [resources]                                 |                                                                    |
+|  27 | [resources](d27Resources.md)                | [<img src="images/day27.jpg" width=30% />](d27Resources.md)        |
 |  28 | [funny]                                     |                                                                    |
 |  29 | [experimental]                              |                                                                    |
 |  30 | [home]                                      |                                                                    |
