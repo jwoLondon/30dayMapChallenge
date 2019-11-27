@@ -29,7 +29,7 @@ Map of [Altitude and Vegetation across the United States](http://www.thomwhite.c
 
 ## Map Design
 
-```elm {l}
+```elm {v}
 isotype : Spec
 isotype =
     let
@@ -219,7 +219,7 @@ isotype =
             dataFromColumns []
                 << dataColumn "x" (nums [ 100, 1100, 1500, 1900, 100, 100, 100, 100 ])
                 << dataColumn "y" (nums [ 100, 100, 100, 100, 90, 70, 60, 50 ])
-                << dataColumn "weight" (strs [ "b", "b", "b", "b", "b", "n", "n" ])
+                << dataColumn "weight" (strs [ "b", "b", "b", "b", "b", "n", "n", "n" ])
                 << dataColumn "label"
                     (strs
                         [ "green: wheat, maize, grassland and praries"
@@ -227,7 +227,7 @@ isotype =
                         , "blue: cotton"
                         , "yellow: oranges, rice and sugar"
                         , "grey: mountain flora, poor steppes and deserts"
-                        , "Don't be deceived by this map of the United States—–there are really five cross-sections just to give you an idea of the lie of the land and the way"
+                        , "Don't be deceived by this map of the United States——there are really five cross-sections just to give you an idea of the lie of the land and the way"
                         , "things grow.  Not all important crops are shown——no tobacco, for instance.  But you've heard of the corn belt and the cotton belt and the wheat belt."
                         , "Well, here they are."
                         ]
@@ -253,7 +253,7 @@ isotype =
         textSpec =
             asSpec
                 [ width 900
-                , height 80
+                , height 90
                 , textData []
                 , textEnc []
                 , textMark [ maAlign haLeft, maFont "Futura" ]
