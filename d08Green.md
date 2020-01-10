@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -18,13 +18,13 @@ _This document best viewed in [litvis](https://github.com/gicentre/litvis)_
 
 ## Initial Thoughts
 
-How green is my borough? In a literal sense - proportion of land that is accessible green space. The Ordance Survey [open Greenspace](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP) dataset contains polygons of accessible green space. Could clip to London boroughs and calculate land area proportion in each. Perhaps breaking down by function (park, alottment, cemetery etc.). Show as an 'after the flood' gridmap? With or without Thames?
+How green is my borough? In a literal sense - proportion of land that is accessible green space. The Ordnance Survey [open Greenspace](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP) dataset contains polygons of accessible green space. Could clip to London boroughs and calculate land area proportion in each. Perhaps breaking down by function (park, allotment, cemetery etc.). Show as an 'after the flood' gridmap? With or without Thames?
 
 ## Data Preparation
 
 1. Create `londonBoroughs.json` from [londonWards-2018.zip](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london))
 
-2. Reproject [open Greenspace shapefiles](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP)) in mapshaper to latlong WGS84, clip to Greater London area, extract the greenspace function, store each polygon's area in hectares, convert to centroid points and save as a topojson file:
+2. Reproject [open Greenspace shapefiles](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP)) in mapshaper to latlong WGS84, clip to Greater London area, extract the greenspace function, store each polygon's area in hectares, convert to centroid points and save as a topoJSON file:
 
 ```
 mapshaper GB_GreenspaceSite.shp \

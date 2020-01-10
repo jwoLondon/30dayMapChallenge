@@ -111,7 +111,7 @@ toPairs ( y, xs ) =
 
 Add the distance to nearest coastal vertex to the northing of each grid point.
 
-```elm {l=hidden}
+```elm {l v}
 gridMap : Spec
 gridMap =
     let

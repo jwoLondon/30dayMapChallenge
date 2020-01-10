@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"

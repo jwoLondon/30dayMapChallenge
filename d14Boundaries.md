@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -55,7 +55,7 @@ path file =
 
 Following Ordnance Survey style colouring for Motorways, A-roads and B-roads.
 
-```elm {l}
+```elm {l v}
 mapRoads : Spec
 mapRoads =
     let

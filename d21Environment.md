@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -22,7 +22,7 @@ Would like to map air pollution in some way. Could embed air [pollution charts](
 
 Could map the familiar London Tube Map but with line width proportional to PM2.5 pollution levels, following the [FT investigation](https://www.ft.com/content/6f381ad4-fef7-11e9-be59-e49b2a136b8d). Assisted by the fact that a relatively limited (albeit important) part of the network is measured.
 
-Use isotype symbolisation to show premature deaths due to air pollutants. One way of turning intangible statistics into more meaningful representations. Could take the estimate for London [around 9000 according to the Kings College report](https://www.london.gov.uk/sites/default/files/hiainlondon_kingsreport_14072015_final.pdf) and distribute those 9000 deaths as 9000 person icons using a white ghost style.
+Use ISOTYPE symbolisation to show premature deaths due to air pollutants. One way of turning intangible statistics into more meaningful representations. Could take the estimate for London [around 9000 according to the Kings College report](https://www.london.gov.uk/sites/default/files/hiainlondon_kingsreport_14072015_final.pdf) and distribute those 9000 deaths as 9000 person icons using a white ghost style.
 
 ## Data Preparation
 

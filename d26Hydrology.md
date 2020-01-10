@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -31,7 +31,7 @@ Could show flow accumulation lines generated from LandSerf. Can produce pleasing
    - flow accumulation with vectors selected, minimum flow magnitude of 2, 70% sample
    - saved as shapefile
 
-2. Major streamlines imported from Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html), clipped in mapshaper and saved as topojson:
+2. Major streamlines imported from Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html), clipped in mapshaper and saved as topoJSON:
 
 ```
 clip bbox=313545,500650,328710,514250

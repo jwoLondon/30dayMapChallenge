@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -61,7 +61,7 @@ path file =
 
 Buildings use the restricted four-colour palette of Byrne. Colours randomly assigned to the modulus 4 of the OSM id. Dashed lines to represent footways, chosen as these help to emphasise squares (Bloomsbury Square, Bedford Square, Lincoln's Inn Fields, Russell Square, Tavistock Square etc.)
 
-```elm {l}
+```elm {l v}
 squaresMap : Spec
 squaresMap =
     let

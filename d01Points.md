@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - ../../../elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -73,7 +73,7 @@ As above but for the whole London region (from Guildford in SW to Ingatestone an
 - Design as if disco album cover
 - Give each point a glow effect by overlaying a smaller point symbol over a larger translucent one.
 
-```elm {l}
+```elm {l v}
 pointMap2 : Spec
 pointMap2 =
     let

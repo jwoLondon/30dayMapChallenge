@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -91,7 +91,7 @@ fontTest =
 
 ### Lake District High Fells
 
-```elm {l}
+```elm {l v}
 elevMap : Spec
 elevMap =
     let
@@ -139,7 +139,7 @@ elevMap =
         ]
 ```
 
-```elm {l}
+```elm {l v}
 reliefMap : Spec
 reliefMap =
     let

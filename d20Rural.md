@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -22,11 +22,11 @@ Rural does not necessarily mean 'pastoral' or 'bucolic'. An opportunity to map u
 
 ## Data Preparation
 
-1. Digital elevation model available from [Ordnance Survey Terrain 50](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50), subset from tiles NY and SD. Shaded relief values calculated in [LandSerf](http://www.landserf.org) and exported as point file. Peak contours derived from LandSerf see [Wood 2009](https://staff.city.ac.uk/~jwo/papers/wood_identification_2009.pdf) and converted into topojson files in mapshaper.
+1. Digital elevation model available from [Ordnance Survey Terrain 50](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50), subset from tiles NY and SD. Shaded relief values calculated in [LandSerf](http://www.landserf.org) and exported as point file. Peak contours derived from LandSerf see [Wood 2009](https://staff.city.ac.uk/~jwo/papers/wood_identification_2009.pdf) and converted into topoJSON files in mapshaper.
 
 2. 'Wainwright' summits digitized manually and saved as `wainwrights.csv`
 
-3. Lake boundaries assembled from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC). Tiles NY and SD. Shapefiles `SurfaceWater_Area` loaded into mapshaper; merged into single layer; large lakes selected; simplified and saved as topojson:
+3. Lake boundaries assembled from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC). Tiles NY and SD. Shapefiles `SurfaceWater_Area` loaded into mapshaper; merged into single layer; large lakes selected; simplified and saved as topoJSON:
 
 ```
 merge-layers target=NY_SurfaceWater_Area,SD_SurfaceWater_Area`
@@ -49,7 +49,7 @@ clean
 o format=topojson lakes.json
 ```
 
-4. Coastline selected from [OS Boundary-Line](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE). `high_water_polyline.shp` loaded into mapshaper, clipped to Cumbria region, simplified and saved as topojson:
+4. Coastline selected from [OS Boundary-Line](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE). `high_water_polyline.shp` loaded into mapshaper, clipped to Cumbria region, simplified and saved as topoJSON:
 
 ```
 clip bbox=293000,483075,359875,545325
@@ -71,7 +71,7 @@ The intention is to show the distribution of nested peak areas (smaller peaks si
 
 Lakes, fell names and coastline provide contextual information.
 
-```elm {l v}
+```elm {l v interactive}
 reliefMap : Spec
 reliefMap =
     let

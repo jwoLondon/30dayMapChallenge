@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -51,7 +51,7 @@ path file =
 
 Vega-Lite doesn't have a direct voronoi transform so instead we use the centroids of each hex constituency and create a custom hex shape scaled as a proportion of the map width. To create a hex grid we need to offset every other row by half the hex width, which is easily achieved with a transform calculation.
 
-```elm {l}
+```elm {l v}
 map1 : Spec
 map1 =
     let

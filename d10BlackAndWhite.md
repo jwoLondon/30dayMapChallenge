@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -170,7 +170,7 @@ densityMap showDay =
         ]
 ```
 
-```elm{l}
+```elm{l v}
 dayMap : Spec
 dayMap =
     densityMap True

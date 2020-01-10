@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -72,7 +72,7 @@ transTidy =
 
 ### Gastner Cartograms
 
-```elm {v interactive}
+```elm {l v interactive}
 gastner : Spec
 gastner =
     let
@@ -170,20 +170,21 @@ presidents =
             dataFromColumns []
                 << dataColumn "year" (nums [ 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016 ])
                 << dataColumn "president"
-                    (strs
-                        [ "data/nixon1972.jpg"
-                        , "data/carter1976.jpg"
-                        , "data/reagan1980.jpg"
-                        , "data/reagan1984.jpg"
-                        , "data/bush1988.jpg"
-                        , "data/clinton1992.jpg"
-                        , "data/clinton1996.jpg"
-                        , "data/bush2000.jpg"
-                        , "data/bush2004.jpg"
-                        , "data/obama2008.jpg"
-                        , "data/obama2012.jpg"
-                        , "data/trump2016.jpg"
+                    (List.map path
+                        [ "nixon1972.jpg"
+                        , "carter1976.jpg"
+                        , "reagan1980.jpg"
+                        , "reagan1984.jpg"
+                        , "bush1988.jpg"
+                        , "clinton1992.jpg"
+                        , "clinton1996.jpg"
+                        , "bush2000.jpg"
+                        , "bush2004.jpg"
+                        , "obama2008.jpg"
+                        , "obama2012.jpg"
+                        , "trump2016.jpg"
                         ]
+                        |> strs
                     )
 
         enc =

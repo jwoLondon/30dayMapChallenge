@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -22,8 +22,8 @@ I like the idea that showing a polar azimuthal projection allows pie charts to b
 
 ## Data Preparation
 
-1. Downlaoded [Global country file including Antarctica](https://github.com/johan/world.geo.json/blob/master/countries.geo.json).
-2. In mapshaper, filter only Antartica and save as topojson:
+1. Downloaded [Global country file including Antarctica](https://github.com/johan/world.geo.json/blob/master/countries.geo.json).
+2. In mapshaper, filter only Antartica and save as topoJSON:
 
 ```
 filter 'FID == "ATA"'

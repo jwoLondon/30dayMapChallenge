@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -47,7 +47,7 @@ partyColours =
         ]
 ```
 
-```elm {v}
+```elm {l v}
 singleBoroughChart : Spec
 singleBoroughChart =
     let
@@ -96,7 +96,7 @@ Faceting seems the obvious choice to arrange candidates into the three rows (nam
 
 An alternative is to explicitly position the coloured lines:
 
-```elm {v}
+```elm {l v}
 singleBoroughChart2 : Spec
 singleBoroughChart2 =
     let

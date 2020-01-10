@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -22,7 +22,7 @@ How has London evolved over time? Perhaps compare my local work area (Clerkenwel
 
 ## Data Preparation
 
-1. James Tyrer's [Clerkenwell Map of 1805](http://www.bl.uk/onlinegallery/onlineex/crace/c/zoomify88267.html) digitized in [LandSerf](http://www.landserf.org) and georectified to match modern Ordnance Survey coordinates. Saved as a Shapefile and saved as topojson file `clerkenwell1805Polys.json` in mapshaper.
+1. James Tyrer's [Clerkenwell Map of 1805](http://www.bl.uk/onlinegallery/onlineex/crace/c/zoomify88267.html) digitized in [LandSerf](http://www.landserf.org) and georectified to match modern Ordnance Survey coordinates. Saved as a Shapefile and saved as topoJSON file `clerkenwell1805Polys.json` in mapshaper.
 2. 1805 Clerkenwell boundary polygon extracted from file in mapshaper:
 
 ```
@@ -38,7 +38,7 @@ affine shift=2,-2
 o format=topojson clerkenwell1805BuildingsOffset.json
 ```
 
-4. Modern Clerkenwell extracted from Open Street Map central London area (via Overpass API ), projected to Ordnance Survey grid coordinates, clipped to 1805 Clerkenwell boundary area, boundaries removed and saved as topojson file:
+4. Modern Clerkenwell extracted from Open Street Map central London area (via Overpass API ), projected to Ordnance Survey grid coordinates, clipped to 1805 Clerkenwell boundary area, boundaries removed and saved as a topoJSON file:
 
 ```
 mapshaper centralLondonPolysOSGB.json \

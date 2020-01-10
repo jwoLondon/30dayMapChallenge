@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -42,7 +42,7 @@ path file =
 Ideally I would colour each country by its own modal flag colour, but with limited time, I will use the modal colour of the continental region.
 Africa's modal colour is split between red and green, depending on how colours are counted, but for contrast with Europe and Asia, I have opted for the green.
 
-```elm {l}
+```elm {l v}
 rasterWorld : Spec
 rasterWorld =
     let
@@ -64,7 +64,7 @@ rasterWorld =
                 << configuration (coView [ vicoStroke Nothing ])
 
         landData =
-            dataFromUrl (path "worldGridmap.csv" |> Debug.log "path")
+            dataFromUrl (path "worldGridmap.csv")
                 [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         seaData =

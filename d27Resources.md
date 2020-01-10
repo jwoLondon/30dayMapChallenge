@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -37,7 +37,7 @@ path file =
 
 ## Map Design
 
-```elm {v interactive}
+```elm {l v interactive}
 isotype : Spec
 isotype =
     let

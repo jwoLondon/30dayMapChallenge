@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -142,7 +142,7 @@ scaleSpec =
     asSpec [ layer [ scalebarSpec, scaleLabelSpec ] ]
 ```
 
-```elm {v}
+```elm {l v}
 lwmMap : Spec
 lwmMap =
     let
@@ -184,7 +184,7 @@ lwmMap =
         ]
 ```
 
-```elm {v}
+```elm {l v}
 contour10Map : Spec
 contour10Map =
     let
@@ -206,7 +206,7 @@ contour10Map =
         ]
 ```
 
-```elm {v interactive}
+```elm {l v interactive}
 contour20Map : Spec
 contour20Map =
     let

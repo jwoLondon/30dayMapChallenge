@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -24,7 +24,7 @@ Could map the results of the autocomplete suggestions following Google queries _
 
 ## Data Preparation
 
-1. World basemap is '1981' from [project linework](http://www.projectlinework.org) that provides not only a generalised set of boundaries, but various labelling and colouring attributes as a well as a country area measure which can be used for changing font size. Converted into topojson via mapshaper with `o format=topojson world1981.json`.
+1. World basemap is '1981' from [project linework](http://www.projectlinework.org) that provides not only a generalised set of boundaries, but various labelling and colouring attributes as a well as a country area measure which can be used for changing font size. Converted into topoJSON via mapshaper with `o format=topojson world1981.json`.
 
 2. Coastal outline created from `world1981.json` in mapshaper with `dissolve` and `o format=topojson drop-table coastlines1981.json`
 

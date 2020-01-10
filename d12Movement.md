@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -40,7 +40,7 @@ path file =
 
 To illustrate the cartographic layout of a gridmap, we can symbolise each state square and its state label. This gives us the basic specification for projecting US states onto a grid. Note that the grid itself is a square (11 x 11 cells) but there are only 8 rows from north to south, so we use `scDomain` to centre those 8 cells within the grid.
 
-```elm {l}
+```elm {l v}
 usGridmap1 : Spec
 usGridmap1 =
     let
@@ -84,7 +84,7 @@ usGridmap1 =
 
 To show some quantitative value in a state, here's a specification without labels where each state is coloured by the amount of some value flowing into it. For illustration we will create a single flow to Maryland (MD). We can use the `usGridmap.csv` data source to convert any state name into its row and column position by using the `lookup` function.
 
-```elm {l}
+```elm {l v}
 usGridmap2 : Spec
 usGridmap2 =
     let
@@ -140,7 +140,7 @@ usGridmap2 =
 
 Now let's repeat this gridmap for every state in the US by faceting the entire chart by the grid cell position of the state:
 
-```elm {l}
+```elm {l v}
 usGridmap3 : Spec
 usGridmap3 =
     let
@@ -211,7 +211,7 @@ But so far we have repeated the same map, once for each state. Instead we can st
 
 It would be trivial to swap the origins and destinations, giving a set of origin maps by simply swapping the `from` and `to` fields in the `trans` function.
 
-```elm {l}
+```elm {l v}
 usMigrationODMap : Spec
 usMigrationODMap =
     let
