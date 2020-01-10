@@ -39,6 +39,14 @@ Add a coloured dot to show winning party.
 3. Added three-letter-abbreviation for each constituency name.
 4. [Election results](https://researchbriefings.parliament.uk/ResearchBriefing/Summary/CBP-7979) used to extract winning and second party and the winning majority as `geResults2017.csv`.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Vega-Lite doesn't have a direct voronoi transform so instead we use the centroids of each hex constituency and create a custom hex shape scaled as a proportion of the map width. To create a hex grid we need to offset every other row by half the hex width, which is easily achieved with a transform calculation.
@@ -68,10 +76,11 @@ map1 =
                     )
 
         data =
-            dataFromUrl "data/ukConstituenciesHex.csv" [ parse [ ( "hexRow", foNum ), ( "hexCol", foNum ) ] ]
+            dataFromUrl (path "ukConstituenciesHex.csv")
+                [ parse [ ( "hexRow", foNum ), ( "hexCol", foNum ) ] ]
 
         resultsData =
-            dataFromUrl "data/geResults2017.csv" []
+            dataFromUrl (path "geResults2017.csv") []
 
         colours =
             categoricalDomainMap

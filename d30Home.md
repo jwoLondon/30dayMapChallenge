@@ -2,8 +2,8 @@
 id: litvis
 
 elm:
-  source-directories:
-    - /Users/jwo/common/elm/elm-vegalite/src/
+  dependencies:
+    gicentre/elm-vegalite: latest
 ---
 
 @import "css/litvis.less"
@@ -33,6 +33,12 @@ Generate a series of terrain profiles of my familiar view looking south towards 
 3. Scale distance along each profile from 0 to 1 in order to scale for perspective.
 4. Combine profiles in single csv file adding an identifier for each profile.
 
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 The intention is to capture the late Autumn colours of the landscape. Low November sun in the afternoon stratifies the landscape giving it an exaggerated sense of depth and a warmth, despite the limited colour palette. I would also like to keep a structure in both Vega-Lite code and visual appearance that reflects my datavis home – these are just area charts showing elevation at selected distances from a single view point.
@@ -53,7 +59,7 @@ profiles =
             configure << configuration (coView [ vicoStroke Nothing ])
 
         profileData =
-            dataFromUrl "data/homeProfiles.csv"
+            dataFromUrl (path "homeProfiles.csv")
                 [ parse [ ( "x", foNum ), ( "elev", foNum ), ( "profileID", foNum ) ] ]
 
         skyData =

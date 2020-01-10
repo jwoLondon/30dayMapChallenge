@@ -26,13 +26,21 @@ This is a chance to explore [FatFonts](http://fatfonts.org) for elevation depict
 
 Elevation data taken from Ordnance Survey [Terrain 50](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50) DEM, converted to point file in [LandSerf](http://www.landserf.org). Shaded relief calculated from the same DEM in LandSerf.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Use fat fonts to show absolute elevation. Terrain mapping often shows higher elevations in lighter colours, so show numbers in white against a black background.
 
 ### Test surface
 
-```elm {l}
+```elm {l v}
 fontTest : Spec
 fontTest =
     let
@@ -98,7 +106,7 @@ elevMap =
                 << configuration (coView [ vicoStroke Nothing ])
 
         data =
-            dataFromUrl "data/highFellsElevation.csv" []
+            dataFromUrl (path "highFellsElevation.csv") []
 
         trans =
             transform

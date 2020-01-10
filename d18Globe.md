@@ -32,6 +32,14 @@ dissolve
 o format=topojson england.json
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 The intent is to create a sense of an isolated country adrift in a large globe. The black background, large border and glowing atmosphere dominated by blue water helps to gain a global perspective.
@@ -75,24 +83,24 @@ globe data fTrans lng =
         ]
 ```
 
-```elm {l}
+```elm {l v}
 usGlobe : Spec
 usGlobe =
-    globe (dataFromUrl "data/worldCountries.json" [ topojsonFeature "countries1" ])
+    globe (dataFromUrl (path "worldCountries.json") [ topojsonFeature "countries1" ])
         (transform << filter (fiExpr "datum.id == 'USA'"))
         30
 
 
 englandGlobe : Spec
 englandGlobe =
-    globe (dataFromUrl "data/england.json" [ topojsonFeature "england" ])
+    globe (dataFromUrl (path "england.json") [ topojsonFeature "england" ])
         transform
         30
 
 
 prkGlobe : Spec
 prkGlobe =
-    globe (dataFromUrl "data/worldCountries.json" [ topojsonFeature "countries1" ])
+    globe (dataFromUrl (path "worldCountries.json") [ topojsonFeature "countries1" ])
         (transform << filter (fiExpr "datum.id == 'PRK'"))
         -50
 ```

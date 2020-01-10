@@ -27,9 +27,17 @@ Map of [Altitude and Vegetation across the United States](http://www.thomwhite.c
 
 2. Vegetation and crop symbols created in [this SVG editor](https://jxnblk.github.io/paths).
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
-```elm {v}
+```elm {v interactive}
 isotype : Spec
 isotype =
     let
@@ -38,19 +46,19 @@ isotype =
                 << configuration (coView [ vicoStroke Nothing ])
 
         profileData =
-            dataFromUrl "data/isotypeProfiles.csv" [ parse [ ( "x", foNum ), ( "y", foNum ), ( "y2", foNum ) ] ]
+            dataFromUrl (path "isotypeProfiles.csv") [ parse [ ( "x", foNum ), ( "y", foNum ), ( "y2", foNum ) ] ]
 
         pointsData =
-            dataFromUrl "data/isotypePoints.csv" [ parse [ ( "x", foNum ), ( "y", foNum ) ] ]
+            dataFromUrl (path "isotypePoints.csv") [ parse [ ( "x", foNum ), ( "y", foNum ) ] ]
 
         coastData =
-            dataFromUrl "data/isotypeCoast.json" [ topojsonFeature "isotypeCoast" ]
+            dataFromUrl (path "isotypeCoast.json") [ topojsonFeature "isotypeCoast" ]
 
         bordersData =
-            dataFromUrl "data/isotypeBorders.json" [ topojsonFeature "isotypeBorders" ]
+            dataFromUrl (path "isotypeBorders.json") [ topojsonFeature "isotypeBorders" ]
 
         labelsData =
-            dataFromUrl "data/isotypeLabels.csv" [ parse [ ( "x", foNum ), ( "y", foNum ) ] ]
+            dataFromUrl (path "isotypeLabels.csv") [ parse [ ( "x", foNum ), ( "y", foNum ) ] ]
 
         colours =
             categoricalDomainMap

@@ -34,6 +34,14 @@ Could create a disco-themed design reflecting traffic light colours. What would 
 6. Only store 'highway' attribute: `filter-fields 'highway'`
 7. Save as CSV file: `each 'longitude=this.x, latitude=this.y' -o 'trafficSignals.csv'`
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Initial map
 
 Test to check the data are workable.
@@ -43,7 +51,7 @@ pointMap1 : Spec
 pointMap1 =
     let
         data =
-            dataFromUrl "data/centralLondonTrafficSignals.csv"
+            dataFromUrl (path "centralLondonTrafficSignals.csv")
 
         enc =
             encoding
@@ -82,7 +90,7 @@ pointMap2 =
                 ]
 
         data =
-            dataFromUrl "data/londonRegionTrafficSignals.csv"
+            dataFromUrl (path "londonRegionTrafficSignals.csv")
 
         trans =
             transform

@@ -26,11 +26,14 @@ Or perhaps Wales, indicating mountainous areas?
 
 1. Use [ONS boundary data](https://geoportal.statistics.gov.uk/datasets/european-electoral-regions-december-2016-full-clipped-boundaries-in-great-britain).
 
-2. Save the Wales boundary polygon:
+2. Select the Wales region, simplify, reproject to longitude/latitude WGS84 and save the Wales boundary polygon:
 
 ```
 mapshaper gbRegions.json \
   -filter 'eer16nm == "Wales"' \
+  -simplify 10% \
+  -proj +init=EPSG:4326 \
+  -rename-layers Wales \
   -o format=topojson wales.json
 ```
 
@@ -44,7 +47,7 @@ mapshaper HydroNode.shp \
   -clip wales.json \
   -filter 'formOfNode == "junction" || formOfNode == "source" || formOfNode == "outlet"' \
   -filter-fields 'formOfNode' \
-  -each 'longitude=this.x, latitude=this.y' -o 'walesStreamNodes.csv'
+  -each 'longitude=this.x.toFixed(3), latitude=this.y.toFixed(3)' -o 'walesStreamNodes.csv'
 ```
 
 4. Project watercourse links from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and perform simplification:
@@ -53,15 +56,23 @@ mapshaper HydroNode.shp \
 mapshaper WatercourseLink.shp \
   -proj +init=EPSG:4326 \
   -clip wales.json \
-  -simplify 50% \
+  -simplify 1% \
   -o format=topojson drop-table walesBlueLines.json
+```
+
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
 ```
 
 ## Map Design
 
 A conventional map design in shades of blue. Use layers to give subtle glow to line features and coastal boundary.
 
-```elm {l}
+```elm {l v interactive}
 streamTopologyMap : Spec
 streamTopologyMap =
     let
@@ -70,13 +81,13 @@ streamTopologyMap =
                 << configuration (coView [ vicoStroke Nothing ])
 
         walesData =
-            dataFromUrl "data/wales.json" [ topojsonFeature "Wales" ]
+            dataFromUrl (path "wales.json") [ topojsonFeature "Wales" ]
 
         linkData =
-            dataFromUrl "data/walesBlueLines.json" [ topojsonFeature "WatercourseLink" ]
+            dataFromUrl (path "walesBlueLines.json") [ topojsonFeature "WatercourseLink" ]
 
         nodeData =
-            dataFromUrl "data/walesStreamNodes.csv" []
+            dataFromUrl (path "walesStreamNodes.csv") []
 
         trans =
             transform

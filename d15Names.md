@@ -26,6 +26,14 @@ Would be a good opportunity to revisit our [BallotMap work](https://openaccess.c
 
 2. Gridmap layout was adapted from the [After the Flood grid](https://aftertheflood.com/journal/we-created-a-new-data-service-to-benefit-citizens-for-future-cities-catapult/) but with `City of London` removed and some readjustment of boroughs to the east and south. Borough names and gridmap positions store in `londonBoroughCentroidsNoCity.csv`.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Let's start with a non geographic representation that orders vertically the alpha position of each candidate (i.e. whether they were listed vertically first, second or third in their party on the ballot paper) and colours each candidate by their party rank (i.e. whether they were fist, second or third in their part in terms of number of votes received). This is similar to Figure 4 in [Wood, 2011](https://openaccess.city.ac.uk/436/) except that we are not sizing party by the proportion of votes.
@@ -51,7 +59,7 @@ singleBoroughChart =
             200
 
         ballotData =
-            dataFromUrl "data/londonVoting2010.csv" []
+            dataFromUrl (path "londonVoting2010.csv") []
 
         trans =
             transform
@@ -100,7 +108,7 @@ singleBoroughChart2 =
             200
 
         ballotData =
-            dataFromUrl "data/londonVoting2010.csv" []
+            dataFromUrl (path "londonVoting2010.csv") []
 
         trans =
             transform
@@ -122,7 +130,7 @@ singleBoroughChart2 =
 
 We can facet the full dataset by the borough position to produce a ballot map, arranging each borough according to its geographic position.
 
-```elm {l}
+```elm {l v}
 ballotMap : Spec
 ballotMap =
     let
@@ -151,10 +159,10 @@ ballotMap =
             ]
 
         boroughData =
-            dataFromUrl "data/londonBoroughCentroidsNoCity.csv" []
+            dataFromUrl (path "londonBoroughCentroidsNoCity.csv") []
 
         ballotData =
-            dataFromUrl "data/londonVoting2010.csv" []
+            dataFromUrl (path "londonVoting2010.csv") []
 
         trans =
             transform

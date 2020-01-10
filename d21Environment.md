@@ -45,6 +45,14 @@ mapshaper m25Points.geojson -clip londonBoundary.json \
  -each 'longitude=this.x, latitude=this.y' -o 'londonHighwayPoints.csv'
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Following the rhetorical visualization design approach exemplified in [Risk, Cycling and Denominator Neglect](https://www.gicentre.net/blog/2013/11/24/risk-cycling-and-denominator-neglect), we can symbolise each modelled premature death with a person symbol and locate them somewhere on the map of London. By random sampling from the distribution of highway-related we can control the number of symbols displayed but spread them out over London closer to the road network. Displaying a full year of 9000 deaths is probably too many symbols to grasp visually, so more effective may be to split by month and repeat 12 times (adding to the rhetorical effect).
@@ -66,10 +74,10 @@ ghostMap month n =
                 << configuration (coView [ vicoStroke Nothing ])
 
         locationData =
-            dataFromUrl "data/londonHighwayPoints.csv" []
+            dataFromUrl (path "londonHighwayPoints.csv") []
 
         boundaryData =
-            dataFromUrl "data/londonBoundary.json" [ topojsonFeature "london" ]
+            dataFromUrl (path "londonBoundary.json") [ topojsonFeature "london" ]
 
         person =
             "M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"

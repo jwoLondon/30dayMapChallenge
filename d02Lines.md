@@ -51,7 +51,7 @@ mapshaper ukGrid.json -clip ukCoastline.json \
  -o format=geojson ukLandGrid.json
 ```
 
-6. Extract coordinates from `ukCoastVertices.json` and `ukLandGrid.json` and place in [d02Data.md])(d02Data.md). Add missing rows to ukLandGrid.json (where no land in transact. Missing rows at the following northings: 983918, 1037568, 1050981, 1064394, 1077806, 1091219, 1104631.
+6. Extract coordinates from `ukCoastVertices.json` and `ukLandGrid.json` and place in [d02Data.md](d02Data.md). Add missing rows to ukLandGrid.json (where no land in transact. Missing rows at the following northings: 983918, 1037568, 1050981, 1064394, 1077806, 1091219, 1104631.
 
 ## Data Check
 

@@ -26,11 +26,19 @@ House of Mirth. Places where I've told jokes and my partner's reaction to them. 
 
 2. Laughter locations generated manually.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 A deadpan architect's basemap of our flat with locations of joke telling overlaid.
 
-```elm {l}
+```elm {l v}
 houseOfMirth : Spec
 houseOfMirth =
     let
@@ -39,16 +47,16 @@ houseOfMirth =
                 << configuration (coView [ vicoStroke Nothing ])
 
         areaData =
-            dataFromUrl "data/floorPlanA.json" [ topojsonFeature "floorPlanA" ]
+            dataFromUrl (path "floorPlanA.json") [ topojsonFeature "floorPlanA" ]
 
         lineData =
-            dataFromUrl "data/floorPlanL.json" [ topojsonFeature "floorPlanL" ]
+            dataFromUrl (path "floorPlanL.json") [ topojsonFeature "floorPlanL" ]
 
         labelData =
-            dataFromUrl "data/floorPlanLabels.csv" []
+            dataFromUrl (path "floorPlanLabels.csv") []
 
         jokesData =
-            dataFromUrl "data/floorPlanJokes.csv" []
+            dataFromUrl (path "floorPlanJokes.csv") []
 
         colours =
             categoricalDomainMap

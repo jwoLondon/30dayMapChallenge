@@ -45,11 +45,19 @@ mapshaper londonBoroughs.json \
  -o greenBoroughs.csv
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Faceted plot using spatial grid positions to place simple stacked chart comparing proportion of land in each borough that is/is not accessible green space. While it might be a nice touch to add a Thames 'meander' to the grid cells adjacent to the river, this would overlay the narrow green strips at the base of many cells.
 
-```elm {l}
+```elm {l v}
 greenMap : Spec
 greenMap =
     let
@@ -66,10 +74,10 @@ greenMap =
                 << configuration (coFacet [ facoSpacing border ])
 
         data =
-            dataFromUrl "data/londonBoroughCentroids.csv" []
+            dataFromUrl (path "londonBoroughCentroids.csv") []
 
         greenData =
-            dataFromUrl "data/greenBoroughs.csv" []
+            dataFromUrl (path "greenBoroughs.csv") []
 
         trans =
             transform

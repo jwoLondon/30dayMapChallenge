@@ -26,6 +26,14 @@ Something that contrasts day and night? Could map Steve Abraham's One Year Time 
 
 Steve's GPS data of were downloaded daily from Strava during 2015. Using location and timestamp of each GPS location, each point was classified as either in daylight or nighttime. The collection of day and night GPS points were converted into two density grids at a resolution of 300m. The grid was resampled to 600m cells and all non-zero grid cells were saved as a point files `abrahamDayPoints.csv` and `avrahamNightPoints.csv`.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Adjacent day and night maps in a two-tone style.
@@ -45,7 +53,7 @@ densityMap showDay =
                 << configuration (coView [ vicoStroke Nothing ])
 
         boundaryData =
-            dataFromUrl "data/gbCoastlineOSGB.json" [ topojsonFeature "coastline" ]
+            dataFromUrl (path "gbCoastlineOSGB.json") [ topojsonFeature "coastline" ]
 
         proj =
             projection [ prType identityProjection, prReflectY True ]
@@ -55,10 +63,10 @@ densityMap showDay =
 
         densityData =
             if showDay then
-                dataFromUrl "data/abrahamDayPoints.csv" []
+                dataFromUrl (path "abrahamDayPoints.csv") []
 
             else
-                dataFromUrl "data/abrahamNightPoints.csv" []
+                dataFromUrl (path "abrahamNightPoints.csv") []
 
         bgColour =
             if showDay then

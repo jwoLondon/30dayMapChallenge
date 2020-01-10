@@ -30,13 +30,21 @@ Could map the results of the autocomplete suggestions following Google queries _
 
 3. Label positions generated from `world1981.json` centroids in mapshaper with `each 'longitude=this.x, latitude=this.y' -o 'countryCentroids.csv'`
 
-4. Data on Google autocompletion scraped in 2013 from a now defunct API, but documented in the paper linked to in the[Zeitgeist Borders project](https://zeitgeist-borders.antonomase.fr/?q=is%20New%20Zealand). Autocompletion data stored in `complete.csv`
+4. Data on Google autocompletion scraped in 2013 from a now defunct API, but documented in the paper linked to in the [Zeitgeist Borders project](https://zeitgeist-borders.antonomase.fr/?q=is%20New%20Zealand). Autocompletion data stored in `complete.csv`
+
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
 
 ## Map Design
 
 The stylistic intent here is to create a 'school atlas' but with Google search terms instead of country names. Can use Vega-Lite's built in sphere and graticule generators for the basic globe style. Sizing labels by country size gives a reasonable first attempt at automatic labelling.
 
-```elm {l}
+```elm {l v}
 worldPlaces : Spec
 worldPlaces =
     let
@@ -51,16 +59,16 @@ worldPlaces =
                 << configuration (coView [ vicoStroke Nothing ])
 
         countryData =
-            dataFromUrl "data/world1981.json" [ topojsonFeature "countries" ]
+            dataFromUrl (path "world1981.json") [ topojsonFeature "countries" ]
 
         coastlineData =
-            dataFromUrl "data/coastlines1981.json" [ topojsonFeature "countries" ]
+            dataFromUrl (path "coastlines1981.json") [ topojsonFeature "countries" ]
 
         placeData =
-            dataFromUrl "data/complete.csv" []
+            dataFromUrl (path "complete.csv") []
 
         centroidData =
-            dataFromUrl "data/countryCentroids.csv" []
+            dataFromUrl (path "countryCentroids.csv") []
 
         trans =
             transform

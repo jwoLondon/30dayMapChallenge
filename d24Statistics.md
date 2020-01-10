@@ -44,13 +44,21 @@ ruby -rcsv -e 'CSV.foreach(ARGV.shift) {|row| print row[2],"\t",row[8],"\t",row[
 (\\d+(?:\\.\\d+)?)\\s*(%|[P|p]ercent)
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 The data collected are not georeferenced, which makes challenge for mapping. Randomly attaching each x% to a location associated with a place name in GB gives something a distribution that is credible, even if disproportionately weighted towards rural place names.
 
 Need to combine the mapped data with the frequency distribution (which is the interesting and non-made-up part of the data).
 
-```elm {v interactive}
+```elm {l v interactive}
 map : Spec
 map =
     let
@@ -75,7 +83,7 @@ map =
                     )
 
         data =
-            dataFromUrl "data/madeUp.csv" []
+            dataFromUrl (path "madeUp.csv") []
 
         enc =
             encoding
@@ -127,7 +135,7 @@ Geolocations are made up."""
         ]
 ```
 
-```elm {v}
+```elm {l v}
 freq : Spec
 freq =
     let
@@ -146,7 +154,7 @@ freq =
                     )
 
         freqData =
-            dataFromUrl "data/madeUp.csv" []
+            dataFromUrl (path "madeUp.csv") []
 
         annotationData =
             dataFromColumns []

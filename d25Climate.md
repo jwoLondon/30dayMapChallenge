@@ -33,8 +33,15 @@ o format=topojson eastCoastPoly.json
 ```
 
 2. Contour lines extracted from [Ordnance Survey terrain 50 vector contour dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50). Tiles TF,TG,TL,TM,TQ,TR,TV combined using mapshaper's `merge-layers`.
-3.
-4. 10m and 20m contours extracted in mapshaper with `filter 'PROP_VALUE <= 20'`
+   10m and 20m contours extracted in mapshaper with `filter 'PROP_VALUE <= 20'`
+
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
 
 ## Map Design
 
@@ -67,11 +74,11 @@ shallowColour =
 
 
 landData =
-    dataFromUrl "data/eastCoastPoly.json" [ topojsonFeature "land" ]
+    dataFromUrl (path "eastCoastPoly.json") [ topojsonFeature "land" ]
 
 
 contourData =
-    dataFromUrl "data/contoursEastCoast.json" [ topojsonFeature "eastCoast" ]
+    dataFromUrl (path "eastCoastContours.json") [ topojsonFeature "eastCoast" ]
 
 
 proj =

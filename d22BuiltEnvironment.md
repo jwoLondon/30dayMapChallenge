@@ -22,7 +22,7 @@ How has London evolved over time? Perhaps compare my local work area (Clerkenwel
 
 ## Data Preparation
 
-1. James Tyrer's [Clerkenwell Map of 1805](https://commons.wikimedia.org/wiki/File:Clerkenwell_1805_Cartographer;_Tyrer,_James.jpg) digitized in [LandSerf](http://www.landserf.org) and georectified to match modern Ordnance Survey coordinates. Saved as a Shapefile and saved as topojson file `clerkenwell1805Polys.json` in mapshaper.
+1. James Tyrer's [Clerkenwell Map of 1805](http://www.bl.uk/onlinegallery/onlineex/crace/c/zoomify88267.html) digitized in [LandSerf](http://www.landserf.org) and georectified to match modern Ordnance Survey coordinates. Saved as a Shapefile and saved as topojson file `clerkenwell1805Polys.json` in mapshaper.
 2. 1805 Clerkenwell boundary polygon extracted from file in mapshaper:
 
 ```
@@ -47,13 +47,21 @@ mapshaper centralLondonPolysOSGB.json \
  -o format=topojson 'clerkenwellPolys.json'
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Would like mimic the style of the Tyrer map, but text placement and orientation along roads and around features is challenging, so will stick to non-text layers for the maps. Keeping related colour schemes in both maps helps comparison. Also show the "Clerk's Well" (southern part of map as small circle) that gave rise to the name of the district on both. The River Fleet was technically outside Clerkenwell but added for context in the 1805 map especially as it adds to the contrast between the two time periods now that the Fleet has bee re-routed as part of the sewer system.
 
 ### 1805
 
-```elm {l}
+```elm {l v}
 clerkenwell1805 : Spec
 clerkenwell1805 =
     let
@@ -68,13 +76,13 @@ clerkenwell1805 =
                 << configuration (coView [ vicoStrokeWidth 2, vicoStroke (Just "#999") ])
 
         data =
-            dataFromUrl "data/clerkenwell1805Polys.json" [ topojsonFeature "clerkenwell" ]
+            dataFromUrl (path "clerkenwell1805Polys.json") [ topojsonFeature "clerkenwell" ]
 
         buildingsOffsetData =
-            dataFromUrl "data/clerkenwell1805BuildingsOffset.json" [ topojsonFeature "clerkenwell" ]
+            dataFromUrl (path "clerkenwell1805BuildingsOffset.json") [ topojsonFeature "clerkenwell" ]
 
         fleetData =
-            dataFromUrl "data/riverFleet.json" [ topojsonFeature "fleet" ]
+            dataFromUrl (path "riverFleet.json") [ topojsonFeature "fleet" ]
 
         wellData =
             dataFromJson (geometry (geoPoint 531460 182070) [])
@@ -151,7 +159,7 @@ clerkenwell1805 =
 
 ### Modern
 
-```elm {l}
+```elm {l v}
 clerkenwellModern : Spec
 clerkenwellModern =
     let
@@ -166,10 +174,10 @@ clerkenwellModern =
                 << configuration (coView [ vicoStroke Nothing ])
 
         data =
-            dataFromUrl "data/clerkenwell2019Polys.json" [ topojsonFeature "clerkenwell" ]
+            dataFromUrl (path "clerkenwell2019Polys.json") [ topojsonFeature "clerkenwell" ]
 
         boundaryData =
-            dataFromUrl "data/clerkenwell1805Boundary.json" [ topojsonFeature "clerkenwell" ]
+            dataFromUrl (path "clerkenwell1805Boundary.json") [ topojsonFeature "clerkenwell" ]
 
         wellData =
             dataFromJson (geometry (geoPoint 531447 182130) [])

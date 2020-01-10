@@ -26,6 +26,14 @@ I have avoided choropleth mapping so far, but would like to include at least one
 
 2. Election results from https://en.wikipedia.org/wiki/List_of_United_States_presidential_election_results_by_state, converted into CSV file selecting 1972-2016 elections.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Specifications common to both sets of maps.
@@ -47,7 +55,7 @@ cfg =
 
 
 electionData =
-    dataFromUrl "data/usElectionResults.csv" []
+    dataFromUrl (path "usElectionResults.csv") []
 
 
 colours =
@@ -69,7 +77,7 @@ gastner : Spec
 gastner =
     let
         cartogramData =
-            dataFromUrl "data/usGastner2014Population.json" [ topojsonFeature "carto" ]
+            dataFromUrl (path "usGastner2014Population.json") [ topojsonFeature "carto" ]
 
         proj =
             projection [ prType equalEarth, prRotate 100 0 0 ]
@@ -112,7 +120,7 @@ conventional : Spec
 conventional =
     let
         geoData =
-            dataFromUrl "data/usStates.json" [ topojsonFeature "states" ]
+            dataFromUrl (path "usStates.json") [ topojsonFeature "states" ]
 
         trans =
             transTidy

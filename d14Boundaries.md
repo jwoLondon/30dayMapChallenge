@@ -41,6 +41,14 @@ lines
 o format=topojson m25SouthBounds.json
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 ### Conventional Road Representation
@@ -66,10 +74,10 @@ mapRoads =
                 ]
 
         roadData =
-            dataFromUrl "data/m25SouthRoads.json" [ topojsonFeature "londonRegionLines" ]
+            dataFromUrl (path "m25SouthRoads.json") [ topojsonFeature "londonRegionLines" ]
 
         boundsData =
-            dataFromUrl "data/m25SouthBounds.json" [ topojsonFeature "londonRegionLines" ]
+            dataFromUrl (path "m25SouthBounds.json") [ topojsonFeature "londonRegionLines" ]
 
         enc =
             encoding
@@ -129,7 +137,7 @@ It would be possible to create island polygons by contouring road buffers within
 
 Use a sequence of colours common in island cartography with a light 'beach colour' contrasting with a dark 'cliff' land boundary surrounding a light to dark topographic colouring. Together they can create the illusion of swapping foreground and background structures.
 
-```elm {l}
+```elm {l v interactive}
 mapIslands : Spec
 mapIslands =
     let
@@ -164,10 +172,10 @@ mapIslands =
                     )
 
         roadData =
-            dataFromUrl "data/m25SouthRoads.json" [ topojsonFeature "londonRegionLines" ]
+            dataFromUrl (path "m25SouthRoads.json") [ topojsonFeature "londonRegionLines" ]
 
         boundsData =
-            dataFromUrl "data/m25SouthBounds.json" [ topojsonFeature "londonRegionLines" ]
+            dataFromUrl (path "m25SouthBounds.json") [ topojsonFeature "londonRegionLines" ]
 
         lineProps =
             [ maFilled False, maStrokeJoin joRound, maStrokeCap caRound ]

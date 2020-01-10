@@ -32,6 +32,14 @@ o format=topojson drop-table antarctica.json
 
 3. Territorial zones copied directly from the [Wikipedia page](https://en.wikipedia.org/wiki/Territorial_claims_in_Antarctica#Antarctic_territorial_claims) and stored inline in the Vega-Lite spec.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Use an azimuthalEquidistant projection rotated by 90 degrees to centre on south pole.
@@ -41,7 +49,7 @@ antarctica : Spec
 antarctica =
     let
         data =
-            dataFromUrl "data/antarctica.json" [ topojsonFeature "antarctica" ]
+            dataFromUrl (path "antarctica.json") [ topojsonFeature "antarctica" ]
 
         proj =
             projection [ prType azimuthalEquidistant, prRotate 0 90 0 ]
@@ -88,7 +96,7 @@ toGeojson zones =
 
 This allows us to overlay the wedges representing territorial claims on the Antartica map:
 
-```elm {l}
+```elm {l v}
 antarcticaZones : Spec
 antarcticaZones =
     let
@@ -103,11 +111,11 @@ antarcticaZones =
             w
 
         geoData =
-            dataFromUrl "data/antarctica.json" [ topojsonFeature "antarctica" ]
+            dataFromUrl (path "antarctica.json") [ topojsonFeature "antarctica" ]
 
         penguinData =
             dataFromColumns []
-                << dataColumn "img" (strs [ "data/emperor.png" ])
+                << dataColumn "img" (strs [ path "emperor.png" ])
 
         terrData =
             dataFromJson

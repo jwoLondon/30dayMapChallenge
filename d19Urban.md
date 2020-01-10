@@ -85,11 +85,19 @@ ukGraveyards.geojson:
 
 4. Concatenate all three csv files providing an additional column identifying the type (`cemetery`, `graveyard` and `crematorium`), stored in `ukDead.csv`
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 I would like to plot the actual location of plots rather than normalise by density. The risk is that this simply echoes the (living) population density. But by sizing point symbols by size of the cemetery / graveyard, we get a clearer distinction between urban cemeteries and rural graveyards. We also see some of the larger facilities are "out of town", such as [Brookwood Cemetery](https://en.wikipedia.org/wiki/Brookwood_Cemetery) in Surrey.
 
-```elm {l}
+```elm {v l}
 citiesOfTheDead : Spec
 citiesOfTheDead =
     let
@@ -98,7 +106,7 @@ citiesOfTheDead =
                 << configuration (coView [ vicoStroke Nothing ])
 
         data =
-            dataFromUrl "data/ukDead.csv" []
+            dataFromUrl (path "ukDead.csv") []
 
         colours =
             categoricalDomainMap

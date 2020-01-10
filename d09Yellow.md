@@ -39,11 +39,19 @@ mapshaper us9809_dni_updated.shp \
  -o 'solarDNI.csv'
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Project grid with AlbersUSA to produce Hawaii inset.
 
-```elm {l}
+```elm {l v}
 emojiMap : Spec
 emojiMap =
     let
@@ -58,7 +66,7 @@ emojiMap =
                 << configuration (coView [ vicoStroke Nothing ])
 
         data =
-            dataFromUrl "data/solarDNI.csv" [ parse [ ( "ANN_ONI", foNum ) ] ]
+            dataFromUrl (path "solarDNI.csv") [ parse [ ( "ANN_ONI", foNum ) ] ]
 
         trans =
             transform

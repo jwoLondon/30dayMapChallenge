@@ -57,13 +57,21 @@ $ simplify 50%
 $ o format=topojson cumbriaCoast.json
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 The intention is to show the distribution of nested peak areas (smaller peaks sitting on top of larger ones) combined with a shaded relief map of the Cumbria region. Vega-Lite is not optimised for raster processing, but symbolising each raster cell with a square, coloured by relief shading value works well enough. Making the relief symbols transparent and placing them over the peak polygons provides a combined shaded polygon effect.
 
 Lakes, fell names and coastline provide contextual information.
 
-```elm {l}
+```elm {l v}
 reliefMap : Spec
 reliefMap =
     let
@@ -79,28 +87,28 @@ reliefMap =
 
         -- Data sources
         dataRelief =
-            dataFromUrl "data/cumbriaRelief.csv" []
+            dataFromUrl (path "cumbriaRelief.csv") []
 
         peakData1 =
-            dataFromUrl "data/peakContours1.json" [ topojsonFeature "peakContours" ]
+            dataFromUrl (path "peakContours1.json") [ topojsonFeature "peakContours" ]
 
         peakData2 =
-            dataFromUrl "data/peakContours2.json" [ topojsonFeature "peakContours" ]
+            dataFromUrl (path "peakContours2.json") [ topojsonFeature "peakContours" ]
 
         peakData3 =
-            dataFromUrl "data/peakContours3.json" [ topojsonFeature "peakContours" ]
+            dataFromUrl (path "peakContours3.json") [ topojsonFeature "peakContours" ]
 
         peakData4 =
-            dataFromUrl "data/peakContours4.json" [ topojsonFeature "peakContours" ]
+            dataFromUrl (path "peakContours4.json") [ topojsonFeature "peakContours" ]
 
         lakesData =
-            dataFromUrl "data/lakes.json" [ topojsonFeature "lakes" ]
+            dataFromUrl (path "lakes.json") [ topojsonFeature "lakes" ]
 
         summitData =
-            dataFromUrl "data/wainwrights.csv" [ parse [ ( "easting", foNum ), ( "northing", foNum ) ] ]
+            dataFromUrl (path "wainwrights.csv") [ parse [ ( "easting", foNum ), ( "northing", foNum ) ] ]
 
         coastData =
-            dataFromUrl "data/cumbriaCoast.json" [ topojsonFeature "high_water_polyline" ]
+            dataFromUrl (path "cumbriaCoast.json") [ topojsonFeature "high_water_polyline" ]
 
         -- Transformations
         proj =

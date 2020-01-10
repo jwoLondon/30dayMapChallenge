@@ -26,6 +26,14 @@ Contour lines represented as spines or similar parametric function, but with sig
 2. Blob detection of grey-level boundaries via [this Processing library](http://www.v3ga.net/processing/BlobDetection/).
 3. Contour simplification written in Java (Douglas Peucker) to output simplified contour vertices.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 The objective is to create a heavily stylised hand-drawn sketchy feel for any source image.
@@ -137,7 +145,7 @@ experiment2 tension =
             w * 212 / 300
 
         data =
-            dataFromUrl "data/experimentalContoursTerrain.csv"
+            dataFromUrl (path "experimentalContoursTerrain.csv")
                 [ parse [ ( "x", foNum ), ( "y", foNum ), ( "seq", foNum ), ( "shape", foNum ) ] ]
 
         enc =
@@ -192,7 +200,7 @@ experiment3 =
             w * 379 / 319
 
         data =
-            dataFromUrl "data/experimentalContoursBeckett.csv"
+            dataFromUrl (path "experimentalContoursBeckett.csv")
                 [ parse [ ( "x", foNum ), ( "y", foNum ), ( "seq", foNum ), ( "shape", foNum ) ] ]
 
         enc =
@@ -236,7 +244,7 @@ experiment5 =
             w * 379 / 319
 
         data =
-            dataFromUrl "data/experimentalContoursJWO.csv"
+            dataFromUrl (path "experimentalContoursJWO.csv")
                 [ parse [ ( "x", foNum ), ( "y", foNum ), ( "seq", foNum ), ( "shape", foNum ) ] ]
 
         enc =

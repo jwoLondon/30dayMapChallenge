@@ -28,6 +28,14 @@ The state migration figures were extracted from the spreadsheet, projected from 
 
 The gridded locations of each state were taken from [the arrangement described by Jonathan Schwabish](https://policyviz.com/2016/04/13/tile-grid-maps-in-excel/) and stored in the file `usGridmap.csv` that links US state names to their location on a 8x11 grid.
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Experiments in OD Map Implementation in Vega-Lite
 
 To illustrate the cartographic layout of a gridmap, we can symbolise each state square and its state label. This gives us the basic specification for projecting US states onto a grid. Note that the grid itself is a square (11 x 11 cells) but there are only 8 rows from north to south, so we use `scDomain` to centre those 8 cells within the grid.
@@ -44,7 +52,7 @@ usGridmap1 =
             400
 
         stateData =
-            dataFromUrl "data/usGridmap.csv" [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
+            dataFromUrl (path "usGridmap.csv") [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         enc =
             encoding
@@ -88,7 +96,7 @@ usGridmap2 =
             400
 
         stateData =
-            dataFromUrl "data/usGridmap.csv" [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
+            dataFromUrl (path "usGridmap.csv") [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         flowData =
             dataFromColumns []
@@ -146,7 +154,7 @@ usGridmap3 =
             500 / 11
 
         stateData =
-            dataFromUrl "data/usGridmap.csv" [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
+            dataFromUrl (path "usGridmap.csv") [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         flowData =
             dataFromColumns []
@@ -217,10 +225,10 @@ usMigrationODMap =
             1200 / 11
 
         stateData =
-            dataFromUrl "data/usGridmap.csv" [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
+            dataFromUrl (path "usGridmap.csv") [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         flowData =
-            dataFromUrl "data/usStateMigration.csv" [ parse [ ( "volume", foNum ) ] ]
+            dataFromUrl (path "usStateMigration.csv") [ parse [ ( "volume", foNum ) ] ]
 
         trans =
             transform

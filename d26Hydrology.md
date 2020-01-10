@@ -18,7 +18,7 @@ _This document best viewed in [litvis](https://github.com/gicentre/litvis)_
 
 ## Initial Thoughts
 
-Could do some topological analysis of stream networks. Perhaps represent them schematically? Would be good practice for Advent Of Code in December.
+Could do some topological analysis of stream networks. Perhaps represent them schematically? Would be good practice for [Advent Of Code](https://adventOfCode.com) in December.
 
 Could show flow accumulation lines generated from LandSerf. Can produce pleasing cartographic output.
 
@@ -46,7 +46,7 @@ o format=topojson swLakeDistrictStreams.json
 clip bbox=313545,500650,328710,514250
 simplify 98%
 clean
-o format=topojson swLakeDistrictFlow.json
+o format=topojson swLakeDistrictFlows.json
 ```
 
 5. Wastwater lake boundary extracted from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC), tile NY. Shapefiles `SurfaceWater_Area` loaded into mapshaper, filtered, clipped and saved as topojson:
@@ -58,11 +58,19 @@ clip bbox=313545,500650,328710,514250
 o format=topojson lakes.json
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Show flow lines against a shaded relief map of terrain. Keep shaded relief somewhat subdued to enhance contrast with flow lines. Using transparency for lines helps to show difference between upper and lower accumulations along their length. Flat regions are a problem for the flow accumulation algorithm, so overlay lake features (in this case, just Wastwater).
 
-```elm {l}
+```elm {l v interactive}
 flowMap : Spec
 flowMap =
     let
@@ -79,16 +87,16 @@ flowMap =
             "rgb(36,37,100)"
 
         flowData =
-            dataFromUrl "data/swLakeDistrictFlows.json" [ topojsonFeature "flows" ]
+            dataFromUrl (path "swLakeDistrictFlows.json") [ topojsonFeature "flows" ]
 
         streamData =
-            dataFromUrl "data/swLakeDistrictStreams.json" [ topojsonFeature "WatercourseLink" ]
+            dataFromUrl (path "swLakeDistrictStreams.json") [ topojsonFeature "WatercourseLink" ]
 
         reliefData =
-            dataFromUrl "data/swLakeDistrictRelief.csv" []
+            dataFromUrl (path "swLakeDistrictRelief.csv") []
 
         lakesData =
-            dataFromUrl "data/wastwater.json" [ topojsonFeature "NY_SurfaceWater_Area" ]
+            dataFromUrl (path "wastwater.json") [ topojsonFeature "NY_SurfaceWater_Area" ]
 
         proj =
             projection

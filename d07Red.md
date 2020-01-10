@@ -50,6 +50,14 @@ mapshaper gbRegions.json \
  -o format=topojson gbCoastlineOSGB.json
 ```
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Could create a dot density map of named red places, which would be simple. But this would be dominated by the overall density of named places (Cities etc.). Better to show normalised rates by comparing the density of 'red' places with that of all named places.
@@ -288,13 +296,13 @@ rMap colour tText =
                 << configuration (coView [ vicoStroke Nothing ])
 
         redData =
-            dataFromUrl ("data/gb" ++ colour ++ "Names.tsv") []
+            dataFromUrl (path "gb" ++ colour ++ "Names.tsv") []
 
         redDensityData =
-            dataFromUrl ("data/gb" ++ colour ++ "Density.csv") []
+            dataFromUrl (path "gb" ++ colour ++ "Density.csv") []
 
         boundaryData =
-            dataFromUrl "data/gbCoastlineOSGB.json" [ topojsonFeature "coastline" ]
+            dataFromUrl (path "gbCoastlineOSGB.json") [ topojsonFeature "coastline" ]
 
         proj =
             projection [ prType identityProjection, prReflectY True ]
@@ -379,5 +387,9 @@ rMap colour tText =
         , layer [ redDensitySpec, pointSpec1, pointSpec2, coastSpec ]
         ]
 ```
+
+^^^elm {v=(rMap "Red" "red")}^^^
+^^^elm {v=(rMap "Coch" "coch")}^^^
+^^^elm {v=(rMap "Dearg" "dearg")}^^^
 
 ![day 7](images/day07.jpg)

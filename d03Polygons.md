@@ -49,6 +49,14 @@ Possible ideas that might be inspired by Byrne's design:
 6. Extreme simplify of path geometry with `simplify 2%`
 7. Store as topojson file: `o format=topojson drop-table bloomsburyFootways.json`
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Buildings use the restricted four-colour palette of Byrne. Colours randomly assigned to the modulus 4 of the OSM id. Dashed lines to represent footways, chosen as these help to emphasise squares (Bloomsbury Square, Bedford Square, Lincoln's Inn Fields, Russell Square, Tavistock Square etc.)
@@ -62,10 +70,12 @@ squaresMap =
                 << configuration (coView [ vicoStroke Nothing ])
 
         buildingData =
-            dataFromUrl "data/bloomsburyBuildings.json" [ topojsonFeature "centralLondonPolys" ]
+            dataFromUrl (path "bloomsburyBuildings.json")
+                [ topojsonFeature "centralLondonPolys" ]
 
         footwayData =
-            dataFromUrl "data/bloomsburyFootways.json" [ topojsonFeature "centralLondonLines" ]
+            dataFromUrl (path "bloomsburyFootways.json")
+                [ topojsonFeature "centralLondonLines" ]
 
         trans =
             transform
@@ -84,10 +94,24 @@ squaresMap =
                 << color [ mName "id", mNominal, mScale colours, mLegend [] ]
 
         buildingSpec =
-            asSpec [ buildingData, trans [], buildingEnc [], geoshape [ maOpacity 0.9 ] ]
+            asSpec
+                [ buildingData
+                , trans []
+                , buildingEnc []
+                , geoshape [ maOpacity 0.9 ]
+                ]
 
         footwaySpec =
-            asSpec [ footwayData, geoshape [ maOpacity 0.9, maFilled False, maStroke "black", maStrokeWidth 2, maStrokeDash [ 4, 4 ] ] ]
+            asSpec
+                [ footwayData
+                , geoshape
+                    [ maOpacity 0.9
+                    , maFilled False
+                    , maStroke "black"
+                    , maStrokeWidth 2
+                    , maStrokeDash [ 4, 4 ]
+                    ]
+                ]
     in
     toVegaLite [ cfg [], width 1300, height 1300, layer [ footwaySpec, buildingSpec ] ]
 ```

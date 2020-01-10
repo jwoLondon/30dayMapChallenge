@@ -29,12 +29,20 @@ Could create something based on [gridmaps](http://openaccess.city.ac.uk/id/eprin
 3. Edits to gridmap to make more compact: Greenland moved to Europe; Antarctica 3 rows up 7 columns left; and New Zealand 1 row up; 1 row left and all of the Americas down by 5 rows; Estonia and Scandinavia moved 1 row down and 1 column left; Greenland and Iceland one row down.
 4. Modal flag colours taken from [this reddit post](https://www.reddit.com/r/dataisbeautiful/comments/85l10h/average_flags_of_the_world_means_modes_and/?st=jezsig8w&sh=71602d49) with addition of the [Antarctic flag](https://en.wikipedia.org/wiki/Flag_of_Antarctica).
 
+Location of generated files:
+
+```elm {l}
+path : String -> String
+path file =
+    "https://gicentre.github.io/data/30dayMapChallenge/" ++ file
+```
+
 ## Map Design
 
 Ideally I would colour each country by its own modal flag colour, but with limited time, I will use the modal colour of the continental region.
 Africa's modal colour is split between red and green, depending on how colours are counted, but for contrast with Europe and Asia, I have opted for the green.
 
-```elm {l=hidden}
+```elm {l}
 rasterWorld : Spec
 rasterWorld =
     let
@@ -56,7 +64,8 @@ rasterWorld =
                 << configuration (coView [ vicoStroke Nothing ])
 
         landData =
-            dataFromUrl "data/worldGridmap.csv" [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
+            dataFromUrl (path "worldGridmap.csv" |> Debug.log "path")
+                [ parse [ ( "row", foNum ), ( "col", foNum ) ] ]
 
         seaData =
             dataFromColumns []
