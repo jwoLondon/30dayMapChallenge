@@ -22,7 +22,7 @@ I only have an hour or so to work on this so need dataset relatively easy to fin
 
 Trees (interesting but coverage in OSM too unreliable)? Telephone boxes (not many left now; would be interesting to have seen them decline over time)? Traffic lights (could work and should reflect street pattern)?
 
-Could create a disco-themed design reflecting traffic light colours. What would London look light at night if only illuminated by traffic lights and Balisha beacons?
+Could create a disco-themed design reflecting traffic light colours. What would London look like at night if only illuminated by traffic lights and Balisha beacons?
 
 ## Data Preparation
 
@@ -55,8 +55,8 @@ pointMap1 =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pMType Quantitative ]
-                << position Latitude [ pName "latitude", pMType Quantitative ]
+                << position Longitude [ pName "longitude", pQuant ]
+                << position Latitude [ pName "latitude", pQuant ]
 
         proj =
             projection [ prType transverseMercator ]
@@ -98,9 +98,9 @@ pointMap2 =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pMType Quantitative ]
-                << position Latitude [ pName "latitude", pMType Quantitative ]
-                << color [ mName "highway", mMType Nominal, mScale colours, mLegend [] ]
+                << position Longitude [ pName "longitude", pQuant ]
+                << position Latitude [ pName "latitude", pQuant ]
+                << color [ mName "highway", mNominal, mScale colours, mLegend [] ]
 
         proj =
             projection [ prType transverseMercator ]

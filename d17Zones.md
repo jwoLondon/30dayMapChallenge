@@ -153,7 +153,7 @@ antarcticaZones =
 
         encZone =
             encoding
-                << color [ mName "properties.country", mMType Nominal, mLegend [] ]
+                << color [ mName "properties.country", mNominal, mLegend [] ]
 
         terrSpec =
             asSpec [ terrData, encZone [], geoshape [ maOpacity 0.2 ] ]

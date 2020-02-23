@@ -88,7 +88,7 @@ gastner =
 
         enc =
             encoding
-                << shape [ mName "gastnerStates", mMType GeoFeature ]
+                << shape [ mName "gastnerStates", mGeo ]
                 << color [ mName "result", mNominal, mScale colours, mLegend [] ]
 
         spec =
@@ -131,7 +131,7 @@ conventional =
 
         enc =
             encoding
-                << shape [ mName "states", mMType GeoFeature ]
+                << shape [ mName "states", mGeo ]
                 << color [ mName "result", mNominal, mScale colours, mLegend [] ]
 
         spec =
