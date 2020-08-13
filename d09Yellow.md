@@ -30,14 +30,14 @@ Data are modelled direct normal irradiance values averaged over the years 1998-2
 
 1. Download [Direct Normal Irradience (DNI)](https://www.nrel.gov/gis/data-solar.html) of the US and sample grid at every 10th cell in X and Y using its `GRIDCODE` referenc; strip unwanted attributes and save as a point file.
 
-```
-mapshaper us9809_dni_updated.shp \
- -filter '(""+GRIDCODE).padStart(9,"0").slice(3,4)%5=="0" && (""+GRIDCODE).padStart(9,"0").slice(7,8)%5=="0"' \
- -filter-fields GRIDCODE,ANN_DNI \
- -points \
- -each 'longitude=this.x, latitude=this.y' \
- -o 'solarDNI.csv'
-```
+   ```sh
+   mapshaper us9809_dni_updated.shp \
+    -filter '(""+GRIDCODE).padStart(9,"0").slice(3,4)%5=="0" && (""+GRIDCODE).padStart(9,"0").slice(7,8)%5=="0"' \
+    -filter-fields GRIDCODE,ANN_DNI \
+    -points \
+    -each 'longitude=this.x, latitude=this.y' \
+    -o 'solarDNI.csv'
+   ```
 
 Location of generated files:
 
@@ -79,9 +79,9 @@ emojiMap =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
-                << text [ tName "cat", tNominal ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
+                << text [ tName "cat" ]
     in
     toVegaLite
         [ cfg []

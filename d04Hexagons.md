@@ -120,7 +120,7 @@ map1 =
 
         firstEnc =
             hexPosition
-                << color [ mName "first", mNominal, mScale colours, mLegend [] ]
+                << color [ mName "first", mScale colours, mLegend [] ]
 
         firstSpec =
             asSpec [ firstEnc [], point (maOpacity 0.2 :: hexMark) ]
@@ -130,7 +130,11 @@ map1 =
 
         secondEnc =
             hexPosition
-                << color [ mName "second", mNominal, mScale colours, mLegend [ leTitle "Second Place Party 2017 General Election" ] ]
+                << color
+                    [ mName "second"
+                    , mScale colours
+                    , mLegend [ leTitle "Second Place Party 2017 General Election" ]
+                    ]
                 << opacity [ mName "deficit", mQuant, mLegend [] ]
 
         secondSpec =
@@ -138,12 +142,12 @@ map1 =
 
         labelEnc =
             hexPosition
-                << text [ tName "label", tNominal ]
+                << text [ tName "label" ]
                 << tooltips
-                    [ [ tName "constituencyName", tNominal ]
-                    , [ tName "first", tNominal ]
-                    , [ tName "second", tNominal ]
-                    , [ tName "majority", tQuant ]
+                    [ [ tName "constituencyName" ]
+                    , [ tName "first" ]
+                    , [ tName "second" ]
+                    , [ tName "majority" ]
                     ]
 
         labelSpec =

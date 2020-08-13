@@ -77,7 +77,7 @@ singleBoroughChart =
         enc =
             encoding
                 << position X [ pName "partyWard", pOrdinal, pSort [ soAscending ], pAxis [] ]
-                << color [ mName "party", mNominal, mScale partyColours ]
+                << color [ mName "party", mScale partyColours ]
                 << opacity [ mName "voteOrder", mOrdinal, mSort [ soDescending ], mScale [ scRange (raNums [ 0.15, 1 ]) ] ]
     in
     toVegaLite
@@ -122,7 +122,7 @@ singleBoroughChart2 =
                 << position X [ pName "partyWard", pOrdinal, pSort [ soAscending ], pAxis [] ]
                 << position Y [ pName "ballotOrder", pOrdinal, pAxis [] ]
                 << position Y2 [ pName "orderBaseline" ]
-                << color [ mName "party", mNominal, mScale partyColours ]
+                << color [ mName "party", mScale partyColours ]
                 << opacity [ mName "voteOrder", mOrdinal, mSort [ soDescending ], mScale [ scRange (raNums [ 0.15, 1 ]) ] ]
     in
     toVegaLite [ cfg [], width gSize, height gSize, ballotData, trans [], enc [], rect [] ]
@@ -179,7 +179,6 @@ ballotMap =
                 << position Y2 [ pName "orderBaseline" ]
                 << color
                     [ mName "party"
-                    , mNominal
                     , mScale partyColours
                     , mLegend
                         (leTitle "Each coloured line is a candidate\nordered vertically according to\ntheir position on the ballot paper."
@@ -208,7 +207,7 @@ ballotMap =
 
         encLabel =
             encoding
-                << text [ tName "mediumName", tNominal ]
+                << text [ tName "mediumName" ]
 
         labelSpec =
             asSpec

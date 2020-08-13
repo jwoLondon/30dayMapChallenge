@@ -28,37 +28,37 @@ Or perhaps Wales, indicating mountainous areas?
 
 2. Select the Wales region, simplify, reproject to longitude/latitude WGS84 and save the Wales boundary polygon:
 
-```
-mapshaper gbRegions.json \
-  -filter 'eer16nm == "Wales"' \
-  -simplify 10% \
-  -proj +init=EPSG:4326 \
-  -rename-layers Wales \
-  -o format=topojson wales.json
-```
+   ```sh
+   mapshaper gbRegions.json \
+     -filter 'eer16nm == "Wales"' \
+     -simplify 10% \
+     -proj +init=EPSG:4326 \
+     -rename-layers Wales \
+     -o format=topojson wales.json
+   ```
 
-2. Download Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html) as shapefiles.
+3. Download Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html) as shapefiles.
 
-3. Project stream nodes from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and filter junction/source/outlet nodes:
+4. Project stream nodes from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and filter junction/source/outlet nodes:
 
-```
-mapshaper HydroNode.shp \
-  -proj +init=EPSG:4326 \
-  -clip wales.json \
-  -filter 'formOfNode == "junction" || formOfNode == "source" || formOfNode == "outlet"' \
-  -filter-fields 'formOfNode' \
-  -each 'longitude=this.x.toFixed(3), latitude=this.y.toFixed(3)' -o 'walesStreamNodes.csv'
-```
+   ```sh
+   mapshaper HydroNode.shp \
+     -proj +init=EPSG:4326 \
+     -clip wales.json \
+     -filter 'formOfNode == "junction" || formOfNode == "source" || formOfNode == "outlet"' \
+     -filter-fields 'formOfNode' \
+     -each 'longitude=this.x.toFixed(3), latitude=this.y.toFixed(3)' -o 'walesStreamNodes.csv'
+   ```
 
-4. Project watercourse links from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and perform simplification:
+5. Project watercourse links from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and perform simplification:
 
-```
-mapshaper WatercourseLink.shp \
-  -proj +init=EPSG:4326 \
-  -clip wales.json \
-  -simplify 1% \
-  -o format=topojson drop-table walesBlueLines.json
-```
+   ```sh
+   mapshaper WatercourseLink.shp \
+     -proj +init=EPSG:4326 \
+     -clip wales.json \
+     -simplify 1% \
+     -o format=topojson drop-table walesBlueLines.json
+   ```
 
 Location of generated files:
 
@@ -110,20 +110,27 @@ streamTopologyMap =
 
         nodeEnc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
 
         nodeSpec =
             asSpec
                 [ nodeData
                 , nodeEnc []
                 , trans []
-                , point [ maStrokeWidth 0.4, maSize 5, maFilled True, maFill "white", maStroke "blue", maOpacity 0.9 ]
+                , point
+                    [ maStrokeWidth 0.4
+                    , maSize 5
+                    , maFilled True
+                    , maFill "white"
+                    , maStroke "blue"
+                    , maOpacity 0.9
+                    ]
                 ]
     in
     toVegaLite
         [ cfg []
-        , title "                   The Rivers of Wales" [ tiFont "Cinzel", tiColor "rgb(0,26,200)", tiFontSize 78, tiOrient siBottom, tiOffset -190, tiAnchor anStart ]
+        , title "The Rivers of Wales" [ tiFont "Cinzel", tiColor "rgb(0,26,200)", tiFontSize 78, tiOrient siBottom, tiOffset -190, tiAnchor anStart ]
         , width 2200
         , height 2400
         , background "rgb(238,238,255)"

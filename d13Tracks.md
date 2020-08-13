@@ -90,7 +90,7 @@ profileMapFW =
         , res []
         , columns 3
         , spacingRC 80 180
-        , facetFlow [ fName "ride", fNominal, fHeader [ hdTitle "", hdLabelFont "Raleway", hdLabelFontSize 20 ] ]
+        , facetFlow [ fName "ride", fHeader [ hdTitle "", hdLabelFont "Raleway", hdLabelFontSize 20 ] ]
         , specification profileMapSpec
         ]
 ```

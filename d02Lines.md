@@ -24,32 +24,32 @@ How best to calculate distance? Does not have to be accurate at this scale so co
 
 2. Create a coastline file with mapshaper by dissolving internal polygon boundaries and reprojecting to OSGB National Grid coordinates:
 
-```
-mapshaper ukConstituencies.json -dissolve2 name=coastline \
- -proj +init=EPSG:27700 \
- -o format=topojson ukCoastline.json
-```
+   ```sh
+   mapshaper ukConstituencies.json -dissolve2 name=coastline \
+    -proj +init=EPSG:27700 \
+    -o format=topojson ukCoastline.json
+   ```
 
 3. Create a coastal vertex file from `ukCoastline.json`:
 
-```
-mapshaper ukCoastline.json -points vertices \
- -o precision=0.1 format=geojson ukCoastVertices.json
-```
+   ```sh
+   mapshaper ukCoastline.json -points vertices \
+    -o precision=0.1 format=geojson ukCoastVertices.json
+   ```
 
 4. Create a grid of 1000x90 points over entire region with mapshaper
 
-```
-mapshaper ukCoastline.json -point-grid 1000,90 \
- -o precision=0.00001 format=geojson ukGrid.json
-```
+   ```sh
+   mapshaper ukCoastline.json -point-grid 1000,90 \
+    -o precision=0.00001 format=geojson ukGrid.json
+   ```
 
 5. Filter grid to create a second grid of points only within land polygons:
 
-```
-mapshaper ukGrid.json -clip ukCoastline.json \
- -o format=geojson ukLandGrid.json
-```
+   ```sh
+   mapshaper ukGrid.json -clip ukCoastline.json \
+    -o format=geojson ukLandGrid.json
+   ```
 
 6. Extract coordinates from `ukCoastVertices.json` and `ukLandGrid.json` and place in [d02Data.md](d02Data.md). Add missing rows to ukLandGrid.json (where no land in transact. Missing rows at the following northings: 983918, 1037568, 1050981, 1064394, 1077806, 1091219, 1104631.
 
@@ -142,7 +142,7 @@ gridMap =
             encoding
                 << position X [ pName "easting", pQuant, pAxis [] ]
                 << position Y [ pName "northing", pQuant, pAxis [] ]
-                << detail [ dName "row", dNominal ]
+                << detail [ dName "row" ]
     in
     toVegaLite
         [ cfg []

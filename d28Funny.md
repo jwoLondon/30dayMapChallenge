@@ -80,7 +80,7 @@ houseOfMirth =
 
         roomEnc =
             encoding
-                << color [ mName "properties.Att", mNominal, mLegend [] ]
+                << color [ mName "properties.Att", mLegend [] ]
 
         roomSpec =
             asSpec
@@ -118,7 +118,7 @@ houseOfMirth =
                     , pScale [ scDomain (doNums [ 150, 1230 ]), scNice niFalse ]
                     , pAxis []
                     ]
-                << text [ tName "label", tNominal ]
+                << text [ tName "label" ]
 
         labelSpec =
             asSpec

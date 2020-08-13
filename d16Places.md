@@ -81,15 +81,15 @@ worldPlaces =
             encoding
                 << color
                     [ mDataCondition [ ( expr "datum.properties.ISO_A3 === 'ATA'", [ mStr "white" ] ) ]
-                        [ mName "properties.MAPCOLOR7", mScale [ scScheme "pastel2" [ 0.1 ] ], mNominal, mLegend [] ]
+                        [ mName "properties.MAPCOLOR7", mScale [ scScheme "pastel2" [ 0.1 ] ], mLegend [] ]
                     ]
 
         labelEnc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
                 << size [ mName "Area", mQuant, mScale [ scRange (raNums [ 3 * w / 800, w / 40 ]) ], mLegend [] ]
-                << text [ tName "label", tNominal ]
+                << text [ tName "label" ]
 
         proj =
             projection [ prType equalEarth ]

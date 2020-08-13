@@ -61,8 +61,8 @@ baseShapes =
             encoding
                 << position X [ pName "x", pQuant, pScale [ scDomain (doNums [ 0, 80 ]) ] ]
                 << position Y [ pName "y", pQuant, pScale [ scDomain (doNums [ 0, 80 ]) ] ]
-                << order [ oName "seq", oOrdinal ]
-                << detail [ dName "shape", dNominal ]
+                << order [ oName "seq" ]
+                << detail [ dName "shape" ]
     in
     toVegaLite
         [ width 300
@@ -93,8 +93,8 @@ experiment1 tension =
                     , pScale [ scDomain (doNums [ 0, 80 ]) ]
                     , pAxis [ axTitle "", axLabels False ]
                     ]
-                << order [ oName "seq", oOrdinal ]
-                << detail [ dName "shape", dNominal ]
+                << order [ oName "seq" ]
+                << detail [ dName "shape" ]
     in
     toVegaLite
         [ width 200
@@ -152,8 +152,8 @@ experiment2 tension =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [], pSort [ soDescending ] ]
-                << order [ oName "seq", oOrdinal ]
-                << detail [ dName "shape", dNominal ]
+                << order [ oName "seq" ]
+                << detail [ dName "shape" ]
     in
     toVegaLite
         [ width w
@@ -207,8 +207,8 @@ experiment3 =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [], pSort [ soDescending ] ]
-                << order [ oName "seq", oOrdinal ]
-                << detail [ dName "shape", dNominal ]
+                << order [ oName "seq" ]
+                << detail [ dName "shape" ]
     in
     toVegaLite
         [ width w
@@ -251,8 +251,8 @@ experiment5 =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [], pSort [ soDescending ] ]
-                << order [ oName "seq", oOrdinal ]
-                << detail [ dName "shape", dNominal ]
+                << order [ oName "seq" ]
+                << detail [ dName "shape" ]
 
         watercolourSpec1 =
             asSpec

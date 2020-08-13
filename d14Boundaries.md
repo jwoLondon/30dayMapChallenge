@@ -24,22 +24,22 @@ Islands in the stream. Show how major roads act as barriers, not enablers of mov
 
 1. From open street map, select the London region including the M25. Convert lines to a geoJson file:
 
-```
-ogr2ogr -f GeoJSON londonRegionLines.geojson map.osm lines
-```
+   ```sh
+   ogr2ogr -f GeoJSON londonRegionLines.geojson map.osm lines
+   ```
 
 2. In mapshaper, create main road dataset and a bounding box polygon:
 
-```
-clip bbox=-0.5705,51.2306,0.14,51.4675
-simplify 1%
-filter "highway=='motorway' || highway=='trunk' || highway=='primary' || highway=='secondary'"
-filter-fields highway
-o format=topojson m25SouthRoads.json
-rectangle
-lines
-o format=topojson m25SouthBounds.json
-```
+   ```sh
+   clip bbox=-0.5705,51.2306,0.14,51.4675
+   simplify 1%
+   filter "highway=='motorway' || highway=='trunk' || highway=='primary' || highway=='secondary'"
+   filter-fields highway
+   o format=topojson m25SouthRoads.json
+   rectangle
+   lines
+   o format=topojson m25SouthBounds.json
+   ```
 
 Location of generated files:
 
@@ -81,7 +81,7 @@ mapRoads =
 
         enc =
             encoding
-                << color [ mName "properties.highway", mNominal, mScale colours, mLegend [] ]
+                << color [ mName "properties.highway", mScale colours, mLegend [] ]
 
         lineProps =
             [ maFilled False, maStrokeJoin joRound, maStrokeCap caRound ]

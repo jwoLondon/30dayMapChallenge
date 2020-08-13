@@ -33,30 +33,30 @@ Could show flow accumulation lines generated from LandSerf. Can produce pleasing
 
 2. Major streamlines imported from Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html), clipped in mapshaper and saved as topoJSON:
 
-```
-clip bbox=313545,500650,328710,514250
-o format=topojson swLakeDistrictStreams.json
-```
+   ```sh
+   clip bbox=313545,500650,328710,514250
+   o format=topojson swLakeDistrictStreams.json
+   ```
 
 3. Relief shading generated in LandSerf using same clipped DEM as step 1. Saved as point file. Add `easting,northing,relief` header to file and replace tabs with commas to created `swLakeDistrictRelief.csv`.
 
 4. Import flow vector shapefile into mapshaper, simplify and clip to slightly smaller region to remove edge effects:
 
-```
-clip bbox=313545,500650,328710,514250
-simplify 98%
-clean
-o format=topojson swLakeDistrictFlows.json
-```
+   ```sh
+   clip bbox=313545,500650,328710,514250
+   simplify 98%
+   clean
+   o format=topojson swLakeDistrictFlows.json
+   ```
 
 5. Wastwater lake boundary extracted from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC), tile NY. Shapefiles `SurfaceWater_Area` loaded into mapshaper, filtered, clipped and saved as topojson:
 
-```
-filter ID=='37B40360-928E-402B-9F1D-3A46BCCF7501'
-clean
-clip bbox=313545,500650,328710,514250
-o format=topojson lakes.json
-```
+   ```sh
+   filter ID=='37B40360-928E-402B-9F1D-3A46BCCF7501'
+   clean
+   clip bbox=313545,500650,328710,514250
+   o format=topojson lakes.json
+   ```
 
 Location of generated files:
 

@@ -91,7 +91,7 @@ squaresMap =
 
         buildingEnc =
             encoding
-                << color [ mName "id", mNominal, mScale colours, mLegend [] ]
+                << color [ mName "id", mScale colours, mLegend [] ]
 
         buildingSpec =
             asSpec

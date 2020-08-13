@@ -24,31 +24,31 @@ Would be an opportunity to examine place names. Perhaps density map of the lette
 
 1. OS OpenName dataset comes as a collection of separate CSV files, one for each 100km grid square. Combine these grid square name files, filtering out any entries of type 'other' (postcodes) and extract only the name, easting and northings from the combined file:
 
-```
-cat *.csv >combined.csv
-grep -v "other" combined.csv >allNames.csv
-ruby -rcsv -e 'CSV.foreach(ARGV.shift) {|row| print row[2],"\t",row[8],"\t",row[9],"\n"}' allNames.csv >gbAllNames.tsv`
-```
+   ```sh
+   cat *.csv >combined.csv
+   grep -v "other" combined.csv >allNames.csv
+   ruby -rcsv -e 'CSV.foreach(ARGV.shift) {|row| print row[2],"\t",row[8],"\t",row[9],"\n"}' allNames.csv >gbAllNames.tsv`
+   ```
 
 2. Create filtered versions containing only names containing 'red', 'coch' and 'dearg':
 
-```
-echo -e "name\teasting\tnorthing" >gbRedNames.tsv
-cat gbAllNames.tsv | grep  -i 'red' >>gbRedNames.tsv
-echo -e "name\teasting\tnorthing"  >gbCochNames.tsv
-cat gbAllNames.tsv | grep  -i 'coch' >>gbCochNames.tsv
-echo -e "name\teasting\tnorthing" >gbDeargNames.tsv
-cat gbAllNames.tsv | grep  -i 'dearg' >>gbDeargNames.tsv
-```
+   ```sh
+   echo -e "name\teasting\tnorthing" >gbRedNames.tsv
+   cat gbAllNames.tsv | grep  -i 'red' >>gbRedNames.tsv
+   echo -e "name\teasting\tnorthing"  >gbCochNames.tsv
+   cat gbAllNames.tsv | grep  -i 'coch' >>gbCochNames.tsv
+   echo -e "name\teasting\tnorthing" >gbDeargNames.tsv
+   cat gbAllNames.tsv | grep  -i 'dearg' >>gbDeargNames.tsv
+   ```
 
 3. Create GB coastline using Ordnance Survey National Grid coordinate system:
 
-```
-mapshaper gbRegions.json \
- -dissolve2 name=coastline \
- -proj EPSG:27700 \
- -o format=topojson gbCoastlineOSGB.json
-```
+   ```sh
+   mapshaper gbRegions.json \
+    -dissolve2 name=coastline \
+    -proj EPSG:27700 \
+    -o format=topojson gbCoastlineOSGB.json
+   ```
 
 Location of generated files:
 

@@ -69,7 +69,7 @@ usGridmap1 =
                     , pScale [ scNice niFalse, scZero False, scDomain (doNums [ -1.5, 8.5 ]) ]
                     , pAxis []
                     ]
-                << text [ tName "state", tNominal ]
+                << text [ tName "state" ]
 
         squareSpec =
             asSpec [ square [ maSize (w * w / 120), maColor "#ccc" ] ]
@@ -257,7 +257,7 @@ usMigrationODMap =
 
         encLabel =
             encPos
-                << text [ tName "state", tNominal ]
+                << text [ tName "state" ]
 
         labelSpec =
             asSpec [ stateData, encLabel [], textMark [ maFontSize (w / 18), maOpacity 0.5, maFont "Roboto Condensed", maColor "white" ] ]

@@ -28,34 +28,34 @@ Rural does not necessarily mean 'pastoral' or 'bucolic'. An opportunity to map u
 
 3. Lake boundaries assembled from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC). Tiles NY and SD. Shapefiles `SurfaceWater_Area` loaded into mapshaper; merged into single layer; large lakes selected; simplified and saved as topoJSON:
 
-```
-merge-layers target=NY_SurfaceWater_Area,SD_SurfaceWater_Area`
+   ```sh
+   merge-layers target=NY_SurfaceWater_Area,SD_SurfaceWater_Area`
 
-filter 'ID=="1D6236E4-E422-4A31-9817-26BCB74E1D50" || \
- ID=="6C429FAB-C970-4036-8839-DF5DD615F723" || \
- ID=="F141751D-9A95-44E2-9962-FF48B8B8E35C" || \
- ID=="7E6C82DF-2D81-4BCF-B594-3FF7233E247B" || \
- ID=="D911366D-7EB7-43C0-8318-C4735EE64CAA" || \
- ID=="A97A4ABE-B6D5-42EB-AAD6-7382900AEFD2" || \
- ID=="0FE65B84-87FA-4C03-8767-25A8C996BE04" || \
- ID=="118B661E-F7FD-4730-9EBA-7AEC08C295C0" || \
- ID=="89BB4176-7223-472B-8B47-75E3938F5CAC" || \
- ID=="E3E23ED6-EC46-4061-9FA9-66A15F0C01A4" || \
- ID=="CE7413D1-8990-47BA-A1F3-431F0997699A" ||\
- ID=="37B40360-928E-402B-9F1D-3A46BCCF7501"'
+   filter 'ID=="1D6236E4-E422-4A31-9817-26BCB74E1D50" || \
+    ID=="6C429FAB-C970-4036-8839-DF5DD615F723" || \
+    ID=="F141751D-9A95-44E2-9962-FF48B8B8E35C" || \
+    ID=="7E6C82DF-2D81-4BCF-B594-3FF7233E247B" || \
+    ID=="D911366D-7EB7-43C0-8318-C4735EE64CAA" || \
+    ID=="A97A4ABE-B6D5-42EB-AAD6-7382900AEFD2" || \
+    ID=="0FE65B84-87FA-4C03-8767-25A8C996BE04" || \
+    ID=="118B661E-F7FD-4730-9EBA-7AEC08C295C0" || \
+    ID=="89BB4176-7223-472B-8B47-75E3938F5CAC" || \
+    ID=="E3E23ED6-EC46-4061-9FA9-66A15F0C01A4" || \
+    ID=="CE7413D1-8990-47BA-A1F3-431F0997699A" ||\
+    ID=="37B40360-928E-402B-9F1D-3A46BCCF7501"'
 
-simplify 2%
-clean
-o format=topojson lakes.json
-```
+   simplify 2%
+   clean
+   o format=topojson lakes.json
+   ```
 
 4. Coastline selected from [OS Boundary-Line](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE). `high_water_polyline.shp` loaded into mapshaper, clipped to Cumbria region, simplified and saved as topoJSON:
 
-```
-clip bbox=293000,483075,359875,545325
-$ simplify 50%
-$ o format=topojson cumbriaCoast.json
-```
+   ```sh
+   clip bbox=293000,483075,359875,545325
+   $ simplify 50%
+   $ o format=topojson cumbriaCoast.json
+   ```
 
 Location of generated files:
 
@@ -177,7 +177,7 @@ reliefMap =
             encoding
                 << position X [ pName "easting", pQuant, pScale [ scDomain (doNums [ 292800, 361000 ]), scZero False, scNice niFalse ], pAxis [] ]
                 << position Y [ pName "northing", pQuant, pScale [ scZero False, scNice niFalse ], pAxis [] ]
-                << text [ tName "name", tNominal ]
+                << text [ tName "name" ]
 
         specSummit1 =
             asSpec
@@ -190,7 +190,7 @@ reliefMap =
             encoding
                 << position X [ pName "easting2", pQuant, pScale [ scDomain (doNums [ 292800, 361000 ]), scZero False, scNice niFalse ], pAxis [] ]
                 << position Y [ pName "northing2", pQuant, pScale [ scZero False, scNice niFalse ], pAxis [] ]
-                << text [ tName "name", tNominal ]
+                << text [ tName "name" ]
 
         specSummit2 =
             asSpec

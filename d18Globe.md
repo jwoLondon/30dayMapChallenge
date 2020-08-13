@@ -26,11 +26,11 @@ We've seen a trend in increasing use of the rhetoric of isolationism in several 
 
 2. For England (as opposed to GB or the UK), used [ukConstituencies.json](https://github.com/gicentre/data/blob/master/uk/ukConstituencies.json). In map shaper filtered for non Scottish and Welsh regions and then dissolving boundaries:
 
-```
-filter 'eer16nm != "Scotland" && eer16nm != "Wales"'
-dissolve
-o format=topojson england.json
-```
+   ```sh
+   filter 'eer16nm != "Scotland" && eer16nm != "Wales"'
+   dissolve
+   o format=topojson england.json
+   ```
 
 Location of generated files:
 

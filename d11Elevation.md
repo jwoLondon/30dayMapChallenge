@@ -74,7 +74,7 @@ fontTest =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [] ]
-                << text [ tName "elev", tNominal ]
+                << text [ tName "elev" ]
     in
     toVegaLite
         [ cfg []
@@ -116,7 +116,7 @@ elevMap =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [] ]
-                << text [ tName "pElev", tNominal ]
+                << text [ tName "pElev" ]
     in
     toVegaLite
         [ cfg []
@@ -164,7 +164,7 @@ reliefMap =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [] ]
-                << text [ tName "pRelief", tNominal ]
+                << text [ tName "pRelief" ]
     in
     toVegaLite
         [ cfg []

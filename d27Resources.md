@@ -138,7 +138,7 @@ isotype =
                     , pAxis []
                     ]
                 << position Y2 [ pName "y2" ]
-                << detail [ dName "profile", dNominal ]
+                << detail [ dName "profile" ]
 
         profileBodySpec =
             asSpec
@@ -160,8 +160,8 @@ isotype =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "surfY", pQuant, pAxis [] ]
-                << detail [ dName "colourProfile", dNominal ]
-                << color [ mName "colour", mNominal, mScale colours, mLegend [] ]
+                << detail [ dName "colourProfile" ]
+                << color [ mName "colour", mScale colours, mLegend [] ]
 
         profileSurfaceSpec =
             asSpec
@@ -175,7 +175,7 @@ isotype =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [] ]
-                << text [ tName "label", tNominal ]
+                << text [ tName "label" ]
 
         labelsSpec =
             asSpec
@@ -194,8 +194,8 @@ isotype =
             encoding
                 << position X [ pName "x", pQuant, pAxis [] ]
                 << position Y [ pName "y", pQuant, pAxis [] ]
-                << color [ mName "colour", mNominal, mScale colours, mLegend [] ]
-                << shape [ mName "type", mNominal, mScale shapes, mLegend [] ]
+                << color [ mName "colour", mScale colours, mLegend [] ]
+                << shape [ mName "type", mScale shapes, mLegend [] ]
 
         pointsSpec =
             asSpec
@@ -255,7 +255,7 @@ isotype =
                     , pScale [ scZero False, scNice niFalse ]
                     , pAxis []
                     ]
-                << text [ tName "label", tNominal ]
+                << text [ tName "label" ]
                 << color [ mDataCondition [ ( expr "datum.weight == 'b'", [ mStr "black" ] ) ] [ mStr "#666" ] ]
 
         textSpec =

@@ -55,8 +55,8 @@ pointMap1 =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
 
         proj =
             projection [ prType transverseMercator ]
@@ -98,9 +98,9 @@ pointMap2 =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
-                << color [ mName "highway", mNominal, mScale colours, mLegend [] ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
+                << color [ mName "highway", mScale colours, mLegend [] ]
 
         proj =
             projection [ prType transverseMercator ]

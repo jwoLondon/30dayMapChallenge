@@ -30,20 +30,20 @@ Given the nature of long term exposure to NO2 and PM2.5, it is impossible to geo
 
 1. In mapshaper, dissolve London boroughs (from `londonBoroughs.json`) to form single outline polygon:
 
-```
-dissolve2
-o format=topojson londonBoundary.json
-```
+   ```sh
+   dissolve2
+   o format=topojson londonBoundary.json
+   ```
 
 2. Extract all point locations associated with London 'highways' in Open Street Map:
 
-```
-ogr2ogr -f GeoJSON m25Points.geojson map.osm points
-mapshaper m25Points.geojson -clip londonBoundary.json \
- -filter 'highway != undefined && highway != "street_lamp"' \
- -filter-fields highway \
- -each 'longitude=this.x, latitude=this.y' -o 'londonHighwayPoints.csv'
-```
+   ```sh
+   ogr2ogr -f GeoJSON m25Points.geojson map.osm points
+   mapshaper m25Points.geojson -clip londonBoundary.json \
+    -filter 'highway != undefined && highway != "street_lamp"' \
+    -filter-fields highway \
+    -each 'longitude=this.x, latitude=this.y' -o 'londonHighwayPoints.csv'
+   ```
 
 Location of generated files:
 
@@ -88,8 +88,8 @@ ghostMap month n =
 
         posEnc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
 
         shapeEnc =
             posEnc

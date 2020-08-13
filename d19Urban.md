@@ -28,60 +28,60 @@ Use overpass to select cemeteries, crematoria, etc. This allows larger areas to 
 
 1. Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu).
 
-```
-( area[name="United Kingdom"]; )->.a;
-way(area.a)[landuse=cemetery];
-(._;>;);
-out;
-```
+   ```sh
+   ( area[name="United Kingdom"]; )->.a;
+   way(area.a)[landuse=cemetery];
+   (._;>;);
+   out;
+   ```
 
-```
-( area[name="United Kingdom"]; )->.a;
-way(area.a)[amenity=grave_yard];
-(._;>;);
-out;
-```
+   ```sh
+   ( area[name="United Kingdom"]; )->.a;
+   way(area.a)[amenity=grave_yard];
+   (._;>;);
+   out;
+   ```
 
-```
-( area[name="United Kingdom"]; )->.a;
-way(area.a)[amenity=crematorium];
-(._;>;);
-out;
-```
+   ```sh
+   ( area[name="United Kingdom"]; )->.a;
+   way(area.a)[amenity=crematorium];
+   (._;>;);
+   out;
+   ```
 
 2. Convert the overpass OSM (XML) files to geoJSON:
 
-```
-ogr2ogr -f GeoJSON ukCemeteries.geojson ukCemeteries.osm multipolygons
-ogr2ogr -f GeoJSON ukCrematoria.geojson ukCrematoria.osm multipolygons
-ogr2ogr -f GeoJSON ukGraveYards.geojson ukGraveyards.osm multipolygons
-```
+   ```sh
+   ogr2ogr -f GeoJSON ukCemeteries.geojson ukCemeteries.osm multipolygons
+   ogr2ogr -f GeoJSON ukCrematoria.geojson ukCrematoria.osm multipolygons
+   ogr2ogr -f GeoJSON ukGraveYards.geojson ukGraveyards.osm multipolygons
+   ```
 
 3. Use mapshaper to convert to point file storing the area of each land parcel:
 
-ukCemeteries.geojson:
+   ukCemeteries.geojson:
 
-```
-   each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-   filter-fields longitude,latitude,area
-   o ukCemeteries.csv
-```
+   ```sh
+      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+      filter-fields longitude,latitude,area
+      o ukCemeteries.csv
+   ```
 
-ukCrematoria.geojson:
+   ukCrematoria.geojson:
 
-```
-   each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-   filter-fields longitude,latitude,area
-   o ukCrematoria.csv
-```
+   ```sh
+      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+      filter-fields longitude,latitude,area
+      o ukCrematoria.csv
+   ```
 
-ukGraveyards.geojson:
+   ukGraveyards.geojson:
 
-```
-   each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-   filter-fields longitude,latitude,area
-   o ukGraveyards.csv
-```
+   ```sh
+      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+      filter-fields longitude,latitude,area
+      o ukGraveyards.csv
+   ```
 
 4. Concatenate all three csv files providing an additional column identifying the type (`cemetery`, `graveyard` and `crematorium`), stored in `ukDead.csv`
 
@@ -117,11 +117,10 @@ citiesOfTheDead =
 
         enc =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
                 << color
                     [ mName "type"
-                    , mNominal
                     , mScale colours
                     , mLegend
                         [ leTitle ""

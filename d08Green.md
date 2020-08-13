@@ -26,24 +26,24 @@ How green is my borough? In a literal sense - proportion of land that is accessi
 
 2. Reproject [open Greenspace shapefiles](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP)) in mapshaper to latlong WGS84, clip to Greater London area, extract the greenspace function, store each polygon's area in hectares, convert to centroid points and save as a topoJSON file:
 
-```
-mapshaper GB_GreenspaceSite.shp \
-  -proj +init=EPSG:4326 \
-  -clip londonBoroughs.json \
-  -filter-fields id,function \
-  -each 'greenArea=this.area/10000' \
-  -points \
-  -o format=topojson londonGreenCentroids.json
-```
+   ```sh
+   mapshaper GB_GreenspaceSite.shp \
+     -proj +init=EPSG:4326 \
+     -clip londonBoroughs.json \
+     -filter-fields id,function \
+     -each 'greenArea=this.area/10000' \
+     -points \
+     -o format=topojson londonGreenCentroids.json
+   ```
 
 3. Aggregate greenspace areas spatially grouping by borough and store total borough GSSCode and green area in a csv file:
 
-```
-mapshaper londonBoroughs.json \
- -join londonGreenCentroids.json fields= sum-fields=greenArea \
- -filter-fields GSSCode,area,greenArea \
- -o greenBoroughs.csv
-```
+   ```sh
+   mapshaper londonBoroughs.json \
+    -join londonGreenCentroids.json fields= sum-fields=greenArea \
+    -filter-fields GSSCode,area,greenArea \
+    -o greenBoroughs.csv
+   ```
 
 Location of generated files:
 
@@ -102,7 +102,6 @@ greenMap =
                     ]
                 << color
                     [ mName "key"
-                    , mNominal
                     , mScale colours
                     , mLegend []
                     ]

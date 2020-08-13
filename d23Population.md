@@ -22,9 +22,9 @@ I have avoided choropleth mapping so far, but would like to include at least one
 
 ## Data Preparation
 
-1. Gastner boundaries from https://github.com/deldersveld/topojson
+1. Gastner boundaries from [github.com/deldersveld/topojson](https://github.com/deldersveld/topojson)
 
-2. Election results from https://en.wikipedia.org/wiki/List_of_United_States_presidential_election_results_by_state, converted into CSV file selecting 1972-2016 elections.
+2. [Election results](https://en.wikipedia.org/wiki/List_of_United_States_presidential_election_results_by_state), converted into CSV file selecting 1972-2016 elections.
 
 Location of generated files:
 
@@ -89,7 +89,7 @@ gastner =
         enc =
             encoding
                 << shape [ mName "gastnerStates", mGeo ]
-                << color [ mName "result", mNominal, mScale colours, mLegend [] ]
+                << color [ mName "result", mScale colours, mLegend [] ]
 
         spec =
             asSpec
@@ -132,7 +132,7 @@ conventional =
         enc =
             encoding
                 << shape [ mName "states", mGeo ]
-                << color [ mName "result", mNominal, mScale colours, mLegend [] ]
+                << color [ mName "result", mScale colours, mLegend [] ]
 
         spec =
             asSpec
@@ -191,7 +191,7 @@ presidents =
             encoding
                 << position X [ pNum imgW ]
                 << position Y [ pNum (h / 2) ]
-                << url [ hName "president", hNominal ]
+                << url [ hName "president" ]
 
         spec =
             asSpec [ width imgW, height h, enc [], image [ maHeight h ] ]

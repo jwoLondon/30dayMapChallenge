@@ -25,10 +25,10 @@ I like the idea that showing a polar azimuthal projection allows pie charts to b
 1. Downloaded [Global country file including Antarctica](https://github.com/johan/world.geo.json/blob/master/countries.geo.json).
 2. In mapshaper, filter only Antartica and save as topoJSON:
 
-```
-filter 'FID == "ATA"'
-o format=topojson drop-table antarctica.json
-```
+   ```sh
+   filter 'FID == "ATA"'
+   o format=topojson drop-table antarctica.json
+   ```
 
 3. Territorial zones copied directly from the [Wikipedia page](https://en.wikipedia.org/wiki/Territorial_claims_in_Antarctica#Antarctic_territorial_claims) and stored inline in the Vega-Lite spec.
 
@@ -153,16 +153,16 @@ antarcticaZones =
 
         encZone =
             encoding
-                << color [ mName "properties.country", mNominal, mLegend [] ]
+                << color [ mName "properties.country", mLegend [] ]
 
         terrSpec =
             asSpec [ terrData, encZone [], geoshape [ maOpacity 0.2 ] ]
 
         encLabel =
             encoding
-                << position Longitude [ pName "longitude", pQuant ]
-                << position Latitude [ pName "latitude", pQuant ]
-                << text [ tName "country", tNominal ]
+                << position Longitude [ pName "longitude" ]
+                << position Latitude [ pName "latitude" ]
+                << text [ tName "country" ]
 
         labelSpec =
             asSpec [ labelData [], encLabel [], textMark [ maFont "Cinzel", maFontSize (w / 50) ] ]
@@ -171,7 +171,7 @@ antarcticaZones =
             encoding
                 << position X [ pNum (w * 0.5), pQuant ]
                 << position Y [ pNum (h * 0.9), pQuant ]
-                << url [ hName "img", hNominal ]
+                << url [ hName "img" ]
 
         penguinSpec =
             asSpec [ penguinData [], imgEnc [], image [ maWidth (w / 8), maHeight (h / 8) ] ]
