@@ -24,41 +24,41 @@ Or perhaps Wales, indicating mountainous areas?
 
 ## Data Preparation
 
-1. Use [ONS boundary data](https://geoportal.statistics.gov.uk/datasets/european-electoral-regions-december-2016-full-clipped-boundaries-in-great-britain).
+1.  Use [ONS boundary data](https://geoportal.statistics.gov.uk/datasets/european-electoral-regions-december-2016-full-clipped-boundaries-in-great-britain).
 
-2. Select the Wales region, simplify, reproject to longitude/latitude WGS84 and save the Wales boundary polygon:
+2.  Select the Wales region, simplify, reproject to longitude/latitude WGS84 and save the Wales boundary polygon:
 
-   ```sh
-   mapshaper gbRegions.json \
-     -filter 'eer16nm == "Wales"' \
-     -simplify 10% \
-     -proj +init=EPSG:4326 \
-     -rename-layers Wales \
-     -o format=topojson wales.json
-   ```
+    ```sh
+    mapshaper gbRegions.json \
+    -filter 'eer16nm == "Wales"' \
+    -simplify 10% \
+    -proj +init=EPSG:4326 \
+    -rename-layers Wales \
+    -o format=topojson wales.json
+    ```
 
-3. Download Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html) as shapefiles.
+3.  Download Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html) as shapefiles.
 
-4. Project stream nodes from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and filter junction/source/outlet nodes:
+4.  Project stream nodes from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and filter junction/source/outlet nodes:
 
-   ```sh
-   mapshaper HydroNode.shp \
-     -proj +init=EPSG:4326 \
-     -clip wales.json \
-     -filter 'formOfNode == "junction" || formOfNode == "source" || formOfNode == "outlet"' \
-     -filter-fields 'formOfNode' \
-     -each 'longitude=this.x.toFixed(3), latitude=this.y.toFixed(3)' -o 'walesStreamNodes.csv'
-   ```
+    ```sh
+    mapshaper HydroNode.shp \
+    -proj +init=EPSG:4326 \
+    -clip wales.json \
+    -filter 'formOfNode == "junction" || formOfNode == "source" || formOfNode == "outlet"' \
+    -filter-fields 'formOfNode' \
+    -each 'longitude=this.x.toFixed(3), latitude=this.y.toFixed(3)' -o 'walesStreamNodes.csv'
+    ```
 
-5. Project watercourse links from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and perform simplification:
+5.  Project watercourse links from OS National Grid to longitude/latitude WGS84, clip to the Wales boundary and perform simplification:
 
-   ```sh
-   mapshaper WatercourseLink.shp \
-     -proj +init=EPSG:4326 \
-     -clip wales.json \
-     -simplify 1% \
-     -o format=topojson drop-table walesBlueLines.json
-   ```
+    ```sh
+    mapshaper WatercourseLink.shp \
+    -proj +init=EPSG:4326 \
+    -clip wales.json \
+    -simplify 1% \
+    -o format=topojson drop-table walesBlueLines.json
+    ```
 
 Location of generated files:
 

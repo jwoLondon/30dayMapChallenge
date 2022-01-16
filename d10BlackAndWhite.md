@@ -24,7 +24,7 @@ Something that contrasts day and night? Could map Steve Abraham's One Year Time 
 
 ## Data Preparation
 
-Steve's GPS data of were downloaded daily from Strava during 2015. Using location and timestamp of each GPS location, each point was classified as either in daylight or nighttime. The collection of day and night GPS points were converted into two density grids at a resolution of 300m. The grid was resampled to 600m cells and all non-zero grid cells were saved as a point files `abrahamDayPoints.csv` and `avrahamNightPoints.csv`.
+Steve's GPS data of were downloaded daily from Strava during 2015. Using location and timestamp of each GPS location, each point was classified as either in daylight or nighttime. The collection of day and night GPS points were converted into two density grids at a resolution of 300m. The grid was resampled to 600m cells and all non-zero grid cells were saved as a point files `abrahamDayPoints.csv` and `abrahamNightPoints.csv`.
 
 Location of generated files:
 
@@ -102,7 +102,7 @@ densityMap showDay =
             75,065 miles and hadn't been beaten in 75 years.
 
       year, this is where Steve spent his time riding
-      nightime hours."""
+      nighttime hours."""
 
         titleAnchor =
             if showDay then

@@ -34,10 +34,10 @@ Add a coloured dot to show winning party.
 
 ## Data Preparation
 
-1. UK parliamentary constituency hex basemap from [ODI Leeds](https://odileeds.org/projects/hexmaps/constituencies).
-2. Converted to CSV with [json-csv.com](https://json-csv.com) with manual editing of column names.
-3. Added three-letter-abbreviation for each constituency name.
-4. [Election results](https://researchbriefings.parliament.uk/ResearchBriefing/Summary/CBP-7979) used to extract winning and second party and the winning majority as `geResults2017.csv`.
+1.  UK parliamentary constituency hex basemap from [ODI Leeds](https://odileeds.org/projects/hexmaps/constituencies).
+2.  Converted to CSV with [json-csv.com](https://json-csv.com) with manual editing of column names.
+3.  Added three-letter-abbreviation for each constituency name.
+4.  [Election results](https://researchbriefings.parliament.uk/ResearchBriefing/Summary/CBP-7979) used to extract winning and second party and the winning majority as `geResults2017.csv`.
 
 Location of generated files:
 

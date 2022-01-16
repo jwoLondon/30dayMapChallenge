@@ -24,10 +24,10 @@ Could create something based on [gridmaps](http://openaccess.city.ac.uk/id/eprin
 
 ## Data Preparation
 
-1. Gridmap coordinates based on [Tile-Grid-Map](https://github.com/mustafasaifee42/Tile-Grid-Map), which in turn is based on this [world gridmap layout](https://policyviz.com/2017/10/12/the-world-tile-grid-map/) by Jonathan Schwabish.
-2. Converted to CSV with [json-csv.com](https://json-csv.com).
-3. Edits to gridmap to make more compact: Greenland moved to Europe; Antarctica 3 rows up 7 columns left; and New Zealand 1 row up; 1 row left and all of the Americas down by 5 rows; Estonia and Scandinavia moved 1 row down and 1 column left; Greenland and Iceland one row down.
-4. Modal flag colours taken from [this reddit post](https://www.reddit.com/r/dataisbeautiful/comments/85l10h/average_flags_of_the_world_means_modes_and/?st=jezsig8w&sh=71602d49) with addition of the [Antarctic flag](https://en.wikipedia.org/wiki/Flag_of_Antarctica).
+1.  Gridmap coordinates based on [Tile-Grid-Map](https://github.com/mustafasaifee42/Tile-Grid-Map), which in turn is based on this [world gridmap layout](https://policyviz.com/2017/10/12/the-world-tile-grid-map/) by Jonathan Schwabish.
+2.  Converted to CSV with [json-csv.com](https://json-csv.com).
+3.  Edits to gridmap to make more compact: Greenland moved to Europe; Antarctica 3 rows up 7 columns left; and New Zealand 1 row up; 1 row left and all of the Americas down by 5 rows; Estonia and Scandinavia moved 1 row down and 1 column left; Greenland and Iceland one row down.
+4.  Modal flag colours taken from [this reddit post](https://www.reddit.com/r/dataisbeautiful/comments/85l10h/average_flags_of_the_world_means_modes_and/?st=jezsig8w&sh=71602d49) with addition of the [Antarctic flag](https://en.wikipedia.org/wiki/Flag_of_Antarctica).
 
 Location of generated files:
 
@@ -124,9 +124,9 @@ rasterWorld =
         labelEnc =
             positionEnc
                 << color
-                    [ mDataCondition
-                        [ ( expr "datum.region == 'Antarctica' || datum.region == 'Oceania'", [ mStr "white" ] )
-                        ]
+                    [ mCondition
+                        (prTest (expr "datum.region == 'Antarctica' || datum.region == 'Oceania'"))
+                        [ mStr "white" ]
                         [ mStr "black" ]
                     ]
 

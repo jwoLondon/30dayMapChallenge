@@ -22,9 +22,9 @@ House of Mirth. Places where I've told jokes and my partner's reaction to them. 
 
 ## Data Preparation
 
-1. Floor plan digitized with [LandSerf](http://www.landserf.org) from a plan of our flat.
+1.  Floor plan digitized with [LandSerf](http://www.landserf.org) from a plan of our flat.
 
-2. Laughter locations generated manually.
+2.  Laughter locations generated manually.
 
 Location of generated files:
 
@@ -152,7 +152,7 @@ houseOfMirth =
                         ]
                     , mLegend
                         [ leTitle "How funny my joke was"
-                        , leValues (leNums (List.range 1 10 |> List.map toFloat))
+                        , leValues (nums (List.range 1 10 |> List.map toFloat))
                         , leTitlePadding 10
                         , leTitleFontSize 15
                         , leTitleLimit 400

@@ -28,10 +28,13 @@ I would like to capture these multiple facets of home in my final map this month
 
 Generate a series of terrain profiles of my familiar view looking south towards the Coniston Fells from Wansfell overlooking Ambleside.
 
-1. Create vectors of along ridge lines in LandSerf, in arcs radiating from a single home viewpoint (western flank of Wansfell).
-2. Extract profiles along horizon points as x,y text files using LandSerf's profile tool)
-3. Scale distance along each profile from 0 to 1 in order to scale for perspective.
-4. Combine profiles in single csv file adding an identifier for each profile.
+1.  Create vectors of along ridge lines in LandSerf, in arcs radiating from a single home viewpoint (western flank of Wansfell).
+
+2.  Extract profiles along horizon points as x,y text files using LandSerf's profile tool)
+
+3.  Scale distance along each profile from 0 to 1 in order to scale for perspective.
+
+4.  Combine profiles in single csv file adding an identifier for each profile.
 
 ```elm {l}
 path : String -> String

@@ -24,15 +24,15 @@ Alternatively, could look at effect of sea level rise on vulnerable coastlines.
 
 ## Data Preparation
 
-1. UK Coastline extracted from [Ordnance Survey Boundary-Line dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE) `high_water_polyline` and then clipped to East coast region and converted to polygon in mapshaper:
+1.  UK Coastline extracted from [Ordnance Survey Boundary-Line dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE) `high_water_polyline` and then clipped to East coast region and converted to polygon in mapshaper:
 
-   ```sh
-   clip bbox= 500000,95150,655650,400000
-   polygons
-   o format=topojson eastCoastPoly.json
-   ```
+    ```sh
+    clip bbox= 500000,95150,655650,400000
+    polygons
+    o format=topojson eastCoastPoly.json
+    ```
 
-2. Contour lines extracted from [Ordnance Survey terrain 50 vector contour dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50). Tiles TF,TG,TL,TM,TQ,TR,TV combined using mapshaper's `merge-layers`. 10m and 20m contours extracted in mapshaper with `filter 'PROP_VALUE <= 20'`
+2.  Contour lines extracted from [Ordnance Survey terrain 50 vector contour dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50). Tiles TF,TG,TL,TM,TQ,TR,TV combined using mapshaper's `merge-layers`. 10m and 20m contours extracted in mapshaper with `filter 'PROP_VALUE <= 20'`
 
 Location of generated files:
 

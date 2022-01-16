@@ -22,16 +22,16 @@ Rural does not necessarily mean 'pastoral' or 'bucolic'. An opportunity to map u
 
 ## Data Preparation
 
-1. Digital elevation model available from [Ordnance Survey Terrain 50](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50), subset from tiles NY and SD. Shaded relief values calculated in [LandSerf](http://www.landserf.org) and exported as point file. Peak contours derived from LandSerf see [Wood 2009](https://staff.city.ac.uk/~jwo/papers/wood_identification_2009.pdf) and converted into topoJSON files in mapshaper.
+1.  Digital elevation model available from [Ordnance Survey Terrain 50](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#TERR50), subset from tiles NY and SD. Shaded relief values calculated in [LandSerf](http://www.landserf.org) and exported as point file. Peak contours derived from LandSerf see [Wood 2009](https://staff.city.ac.uk/~jwo/papers/wood_identification_2009.pdf) and converted into topoJSON files in mapshaper.
 
-2. 'Wainwright' summits digitized manually and saved as `wainwrights.csv`
+2.  'Wainwright' summits digitized manually and saved as `wainwrights.csv`
 
-3. Lake boundaries assembled from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC). Tiles NY and SD. Shapefiles `SurfaceWater_Area` loaded into mapshaper; merged into single layer; large lakes selected; simplified and saved as topoJSON:
+3.  Lake boundaries assembled from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC). Tiles NY and SD. Shapefiles `SurfaceWater_Area` loaded into mapshaper; merged into single layer; large lakes selected; simplified and saved as topoJSON:
 
-   ```sh
-   merge-layers target=NY_SurfaceWater_Area,SD_SurfaceWater_Area`
+    ```sh
+    merge-layers target=NY_SurfaceWater_Area,SD_SurfaceWater_Area`
 
-   filter 'ID=="1D6236E4-E422-4A31-9817-26BCB74E1D50" || \
+    filter 'ID=="1D6236E4-E422-4A31-9817-26BCB74E1D50" || \
     ID=="6C429FAB-C970-4036-8839-DF5DD615F723" || \
     ID=="F141751D-9A95-44E2-9962-FF48B8B8E35C" || \
     ID=="7E6C82DF-2D81-4BCF-B594-3FF7233E247B" || \
@@ -44,18 +44,18 @@ Rural does not necessarily mean 'pastoral' or 'bucolic'. An opportunity to map u
     ID=="CE7413D1-8990-47BA-A1F3-431F0997699A" ||\
     ID=="37B40360-928E-402B-9F1D-3A46BCCF7501"'
 
-   simplify 2%
-   clean
-   o format=topojson lakes.json
-   ```
+    simplify 2%
+    clean
+    o format=topojson lakes.json
+    ```
 
-4. Coastline selected from [OS Boundary-Line](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE). `high_water_polyline.shp` loaded into mapshaper, clipped to Cumbria region, simplified and saved as topoJSON:
+4.  Coastline selected from [OS Boundary-Line](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#BDLINE). `high_water_polyline.shp` loaded into mapshaper, clipped to Cumbria region, simplified and saved as topoJSON:
 
-   ```sh
-   clip bbox=293000,483075,359875,545325
-   $ simplify 50%
-   $ o format=topojson cumbriaCoast.json
-   ```
+    ```sh
+    clip bbox=293000,483075,359875,545325
+    $ simplify 50%
+    $ o format=topojson cumbriaCoast.json
+    ```
 
 Location of generated files:
 
@@ -210,7 +210,7 @@ reliefMap =
             , tiOrient siBottom
             , tiAnchor anStart
             , tiOffset -100
-            , tiSubtitle "Peak hierarchy of at leat 50m relative drop\nAll 'Wainwright' summits named."
+            , tiSubtitle "Peak hierarchy of at least 50m relative drop\nAll 'Wainwright' summits named."
             , tiSubtitleFontSize 16
             ]
         , layer [ lakesSpec, peakSpec, specRelief, specSummit1, specSummit2, coastSpec, coastSpec2 ]

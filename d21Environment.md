@@ -28,22 +28,22 @@ Use ISOTYPE symbolisation to show premature deaths due to air pollutants. One wa
 
 Given the nature of long term exposure to NO2 and PM2.5, it is impossible to geolocate single locations for a premature death, So instead we can distribute the 9000 locations randomly within a set of locations associated with road traffic.
 
-1. In mapshaper, dissolve London boroughs (from `londonBoroughs.json`) to form single outline polygon:
+1.  In mapshaper, dissolve London boroughs (from `londonBoroughs.json`) to form single outline polygon:
 
-   ```sh
-   dissolve2
-   o format=topojson londonBoundary.json
-   ```
+    ```sh
+    dissolve2
+    o format=topojson londonBoundary.json
+    ```
 
-2. Extract all point locations associated with London 'highways' in Open Street Map:
+2.  Extract all point locations associated with London 'highways' in Open Street Map:
 
-   ```sh
-   ogr2ogr -f GeoJSON m25Points.geojson map.osm points
-   mapshaper m25Points.geojson -clip londonBoundary.json \
+    ```sh
+    ogr2ogr -f GeoJSON m25Points.geojson map.osm points
+    mapshaper m25Points.geojson -clip londonBoundary.json \
     -filter 'highway != undefined && highway != "street_lamp"' \
     -filter-fields highway \
     -each 'longitude=this.x, latitude=this.y' -o 'londonHighwayPoints.csv'
-   ```
+    ```
 
 Location of generated files:
 
@@ -164,7 +164,7 @@ ghostMap month n =
                 , textMark
                     [ maColor "white"
                     , maFont "Raleway"
-                    , maFontWeight Normal
+                    , maFontWeight fwNormal
                     , maFontSize 32
                     , maAlign haLeft
                     , maDx 25
@@ -179,7 +179,7 @@ ghostMap month n =
             [ tiColor "white"
             , tiFont "Raleway"
             , tiAnchor anStart
-            , tiFontWeight Normal
+            , tiFontWeight fwNormal
             , tiFontSize 32
             ]
         , background "black"

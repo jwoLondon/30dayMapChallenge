@@ -30,24 +30,24 @@ Possible ideas that might be inspired by Byrne's design:
 
 ### Buildings
 
-1. [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1378,51.5106,-0.1122,51.5261` (central London)
-2. Exported from OSM via Overpass API
-3. Polygon features converted to geoJSON via `ogr2ogr -f GeoJSON bloomsburyPolys.geojson map.osm multipolygons`
-4. Imported into [Mapshaper](https://mapshaper.org) and clipped in mapshaper console with `clip bbox=-0.1378,51.5106,-0.1122,51.5261`
-5. Simplify geometry with `simplify 50%`
-6. Extract buildings: `filter 'building != undefined'`
-7. Store only OSM object ID: `filter-fields 'osm_way_id,osm_id'`
-8. Store as topojson file: `o format=topojson bloomsburyBuildings.json`
+1.  [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1378,51.5106,-0.1122,51.5261` (central London)
+2.  Exported from OSM via Overpass API
+3.  Polygon features converted to geoJSON via `ogr2ogr -f GeoJSON bloomsburyPolys.geojson map.osm multipolygons`
+4.  Imported into [Mapshaper](https://mapshaper.org) and clipped in mapshaper console with `clip bbox=-0.1378,51.5106,-0.1122,51.5261`
+5.  Simplify geometry with `simplify 50%`
+6.  Extract buildings: `filter 'building != undefined'`
+7.  Store only OSM object ID: `filter-fields 'osm_way_id,osm_id'`
+8.  Store as topojson file: `o format=topojson bloomsburyBuildings.json`
 
 ### Footpaths
 
-1. [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1378,51.5106,-0.1122,51.5261` (central London)
-2. Exported from OSM via Overpass API
-3. Line features converted to geoJSON via `ogr2ogr -f GeoJSON bloomsburyLines.geojson map.osm lines`
-4. Imported into [Mapshaper](https://mapshaper.org) and clipped in mapshaper console with `clip bbox=-0.1378,51.5106,-0.1122,51.5261`
-5. Extract footpaths: `filter 'highway == "footway"'`
-6. Extreme simplify of path geometry with `simplify 2%`
-7. Store as topojson file: `o format=topojson drop-table bloomsburyFootways.json`
+1.  [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1378,51.5106,-0.1122,51.5261` (central London)
+2.  Exported from OSM via Overpass API
+3.  Line features converted to geoJSON via `ogr2ogr -f GeoJSON bloomsburyLines.geojson map.osm lines`
+4.  Imported into [Mapshaper](https://mapshaper.org) and clipped in mapshaper console with `clip bbox=-0.1378,51.5106,-0.1122,51.5261`
+5.  Extract footpaths: `filter 'highway == "footway"'`
+6.  Extreme simplify of path geometry with `simplify 2%`
+7.  Store as topojson file: `o format=topojson drop-table bloomsburyFootways.json`
 
 Location of generated files:
 

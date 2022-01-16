@@ -20,38 +20,38 @@ How best to calculate distance? Does not have to be accurate at this scale so co
 
 ## Data File Preparation
 
-1. Use [ukConstituencies.json](https://github.com/gicentre/data/blob/master/uk/ukConstituencies.json), which itself was based on [ONS boundary data](https://geoportal.statistics.gov.uk/datasets/european-electoral-regions-december-2016-full-clipped-boundaries-in-great-britain) simplified in [mapshaper](https://mapshaper.org).
+1.  Use [ukConstituencies.json](https://github.com/gicentre/data/blob/master/uk/ukConstituencies.json), which itself was based on [ONS boundary data](https://geoportal.statistics.gov.uk/datasets/european-electoral-regions-december-2016-full-clipped-boundaries-in-great-britain) simplified in [mapshaper](https://mapshaper.org).
 
-2. Create a coastline file with mapshaper by dissolving internal polygon boundaries and reprojecting to OSGB National Grid coordinates:
+2.  Create a coastline file with mapshaper by dissolving internal polygon boundaries and reprojecting to OSGB National Grid coordinates:
 
-   ```sh
-   mapshaper ukConstituencies.json -dissolve2 name=coastline \
+    ```sh
+    mapshaper ukConstituencies.json -dissolve2 name=coastline \
     -proj +init=EPSG:27700 \
     -o format=topojson ukCoastline.json
-   ```
+    ```
 
-3. Create a coastal vertex file from `ukCoastline.json`:
+3.  Create a coastal vertex file from `ukCoastline.json`:
 
-   ```sh
-   mapshaper ukCoastline.json -points vertices \
+    ```sh
+    mapshaper ukCoastline.json -points vertices \
     -o precision=0.1 format=geojson ukCoastVertices.json
-   ```
+    ```
 
-4. Create a grid of 1000x90 points over entire region with mapshaper
+4.  Create a grid of 1000x90 points over entire region with mapshaper
 
-   ```sh
-   mapshaper ukCoastline.json -point-grid 1000,90 \
+    ```sh
+    mapshaper ukCoastline.json -point-grid 1000,90 \
     -o precision=0.00001 format=geojson ukGrid.json
-   ```
+    ```
 
-5. Filter grid to create a second grid of points only within land polygons:
+5.  Filter grid to create a second grid of points only within land polygons:
 
-   ```sh
-   mapshaper ukGrid.json -clip ukCoastline.json \
+    ```sh
+    mapshaper ukGrid.json -clip ukCoastline.json \
     -o format=geojson ukLandGrid.json
-   ```
+    ```
 
-6. Extract coordinates from `ukCoastVertices.json` and `ukLandGrid.json` and place in [d02Data.md](d02Data.md). Add missing rows to ukLandGrid.json (where no land in transact. Missing rows at the following northings: 983918, 1037568, 1050981, 1064394, 1077806, 1091219, 1104631.
+6.  Extract coordinates from `ukCoastVertices.json` and `ukLandGrid.json` and place in [d02Data.md](d02Data.md). Add missing rows to ukLandGrid.json (where no land in transact. Missing rows at the following northings: 983918, 1037568, 1050981, 1064394, 1077806, 1091219, 1104631.
 
 ## Data Check
 
@@ -151,7 +151,7 @@ gridMap =
             [ tiColor "#eee"
             , tiOrient siBottom
             , tiFontSize 27.9
-            , tiFontWeight W400
+            , tiFontWeight (fwValue 400)
             , tiOffset -5
             ]
         , padding (paSize 300)

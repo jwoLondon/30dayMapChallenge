@@ -78,7 +78,7 @@ profileMapFW =
         [ cfg []
         , title "Mountain Tracks"
             [ tiFont "Raleway"
-            , tiFontWeight Bold
+            , tiFontWeight fwBold
             , tiFontSize 50
             , tiAnchor anMiddle
             , tiOffset 100

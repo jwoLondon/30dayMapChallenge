@@ -26,13 +26,13 @@ Could create a disco-themed design reflecting traffic light colours. What would 
 
 ## Data Preparation
 
-1. [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1909,51.4744,-0.0249,51.5447` (central London)
-2. Exported from OSM via Overpass API
-3. Point features converted to geoJSON via `ogr2ogr -f GeoJSON pointMap.geojson map.osm points`
-4. Imported into [Mapshaper]() and clipped in mapshaper console with `clip bbox=-0.1909,51.4744,-0.0249,51.5447`
-5. Filtered for traffic signal features with `filter 'highway == "traffic_signals" || RegExp(".*traffic_signals.*").test(other_tags)'`
-6. Only store 'highway' attribute: `filter-fields 'highway'`
-7. Save as CSV file: `each 'longitude=this.x, latitude=this.y' -o 'trafficSignals.csv'`
+1.  [Open Street Map](https://www.openstreetmap.org/search?query=london#map=11/51.5077/-0.1274) with bounds `-0.1909,51.4744,-0.0249,51.5447` (central London)
+2.  Exported from OSM via Overpass API
+3.  Point features converted to geoJSON via `ogr2ogr -f GeoJSON pointMap.geojson map.osm points`
+4.  Imported into [Mapshaper](https://mapshaper.org) and clipped in mapshaper console with `clip bbox=-0.1909,51.4744,-0.0249,51.5447`
+5.  Filtered for traffic signal features with `filter 'highway == "traffic_signals" || RegExp(".*traffic_signals.*").test(other_tags)'`
+6.  Only store 'highway' attribute: `filter-fields 'highway'`
+7.  Save as CSV file: `each 'longitude=this.x, latitude=this.y' -o 'trafficSignals.csv'`
 
 Location of generated files:
 
@@ -115,7 +115,7 @@ pointMap2 =
         [ cfg []
         , background "black"
         , padding (paEdges 0 40 0 0)
-        , title "Traffic Lights of London" [ tiOffset 10, tiColor "#ffa908", tiFont "Monoton", tiFontWeight Normal, tiFontSize 60 ]
+        , title "Traffic Lights of London" [ tiOffset 10, tiColor "#ffa908", tiFont "Monoton", tiFontWeight fwNormal, tiFontSize 60 ]
         , width 1200
         , height 1000
         , data []

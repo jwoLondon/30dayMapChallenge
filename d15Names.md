@@ -22,9 +22,9 @@ Would be a good opportunity to revisit our [BallotMap work](https://openaccess.c
 
 ## Data Preparation
 
-1. Voting data were taken from the London GLA elections in 2010, stored in the file `londonVoting2010.csv`. For details of the data collection and cleaning process, see [Wood et al, 2011](https://openaccess.city.ac.uk/436/).
+1.  Voting data were taken from the London GLA elections in 2010, stored in the file `londonVoting2010.csv`. For details of the data collection and cleaning process, see [Wood et al, 2011](https://openaccess.city.ac.uk/436/).
 
-2. Gridmap layout was adapted from the [After the Flood grid](https://aftertheflood.com/journal/we-created-a-new-data-service-to-benefit-citizens-for-future-cities-catapult/) but with `City of London` removed and some readjustment of boroughs to the east and south. Borough names and gridmap positions store in `londonBoroughCentroidsNoCity.csv`.
+2.  Gridmap layout was adapted from the [After the Flood grid](https://aftertheflood.com/journal/we-created-a-new-data-service-to-benefit-citizens-for-future-cities-catapult/) but with `City of London` removed and some readjustment of boroughs to the east and south. Borough names and gridmap positions store in `londonBoroughCentroidsNoCity.csv`.
 
 Location of generated files:
 
@@ -147,7 +147,7 @@ ballotMap =
 
         legendProps =
             [ leTitleFont "Roboto Condensed"
-            , leTitleFontWeight Normal
+            , leTitleFontWeight fwNormal
             , leTitleFontSize (w / 11.5)
             , leLabelFont "Roboto Condensed"
             , leLabelFontSize (w / 11.5)

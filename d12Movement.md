@@ -282,7 +282,8 @@ usMigrationODMap =
                     , pAxis []
                     ]
                 << color
-                    [ mDataCondition [ ( expr "datum.volume < 0", [ mStr "black" ] ) ]
+                    [ mCondition (prTest (expr "datum.volume < 0"))
+                        [ mStr "black" ]
                         [ mName "volume", mQuant, mScale [ scType scSymLog ], mScale [ scScheme "reds" [ 0, 1 ] ], mLegend [] ]
                     ]
 

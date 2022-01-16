@@ -28,16 +28,16 @@ e.g. 🤕🙂🥰😍🥵😡👹
 
 Data are modelled direct normal irradiance values averaged over the years 1998-2016. Indicates the potential for renewable solar energy production across the US.
 
-1. Download [Direct Normal Irradience (DNI)](https://www.nrel.gov/gis/data-solar.html) of the US and sample grid at every 10th cell in X and Y using its `GRIDCODE` referenc; strip unwanted attributes and save as a point file.
+1.  Download [Direct Normal Irradience (DNI)](https://www.nrel.gov/gis/data-solar.html) of the US and sample grid at every 10th cell in X and Y using its `GRIDCODE` reference; strip unwanted attributes and save as a point file.
 
-   ```sh
-   mapshaper us9809_dni_updated.shp \
+    ```sh
+    mapshaper us9809_dni_updated.shp \
     -filter '(""+GRIDCODE).padStart(9,"0").slice(3,4)%5=="0" && (""+GRIDCODE).padStart(9,"0").slice(7,8)%5=="0"' \
     -filter-fields GRIDCODE,ANN_DNI \
     -points \
     -each 'longitude=this.x, latitude=this.y' \
     -o 'solarDNI.csv'
-   ```
+    ```
 
 Location of generated files:
 
@@ -72,7 +72,7 @@ emojiMap =
             transform
                 << filter (fiExpr "slice(datum.GRIDCODE,0,5) != '16055' && slice(datum.GRIDCODE,-4) > '1855'")
                 << calculateAs "round(datum.ANN_DNI)" "dni"
-                << calculateAs "{3: '\u{1F915}', 4: '🙂', 5: '😍', 6:'😍',7:'😡',8:'👹',9:'👹'}[datum.dni]" "cat"
+                << calculateAs "{3: '🤕', 4: '🙂', 5: '😍', 6:'😍',7:'😡',8:'👹',9:'👹'}[datum.dni]" "cat"
 
         proj =
             projection [ prType albersUsa ]
@@ -89,7 +89,7 @@ emojiMap =
         , height h
         , title "Phew, what a scorcher!"
             [ tiFont "Alfa Slab One"
-            , tiFontWeight Normal
+            , tiFontWeight fwNormal
             , tiFontSize 60
             , tiColor "rgb(238,161,20)"
             , tiOffset -30

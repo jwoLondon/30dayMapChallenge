@@ -23,9 +23,9 @@ Map of [Altitude and Vegetation across the United States](http://www.thomwhite.c
 
 ## Data Preparation
 
-1. Profiles digitized with [LandSerf](http://www.landserf.org) from a scan of [the original](http://www.thomwhite.co.uk/wp-content/uploads/2013/05/isotype_p11_only_an_ocean_between_l_s_florence.jpg).
+1.  Profiles digitized with [LandSerf](http://www.landserf.org) from a scan of [the original](http://www.thomwhite.co.uk/wp-content/uploads/2013/05/isotype_p11_only_an_ocean_between_l_s_florence.jpg).
 
-2. Vegetation and crop symbols created in [this SVG editor](https://jxnblk.github.io/paths).
+2.  Vegetation and crop symbols created in [this SVG editor](https://jxnblk.github.io/paths).
 
 Location of generated files:
 
@@ -185,7 +185,7 @@ isotype =
                     [ maColor "rgb(70,70,70)"
                     , maAlign haLeft
                     , maFont "Futura"
-                    , maFontWeight Bold
+                    , maFontWeight fwBold
                     , maFontSize 12
                     ]
                 ]
@@ -230,7 +230,7 @@ isotype =
                 << dataColumn "weight" (strs [ "b", "b", "b", "b", "b", "n", "n", "n" ])
                 << dataColumn "label"
                     (strs
-                        [ "green: wheat, maize, grassland and praries"
+                        [ "green: wheat, maize, grassland and prairies"
                         , " red: forests"
                         , "blue: cotton"
                         , "yellow: oranges, rice and sugar"
@@ -256,7 +256,11 @@ isotype =
                     , pAxis []
                     ]
                 << text [ tName "label" ]
-                << color [ mDataCondition [ ( expr "datum.weight == 'b'", [ mStr "black" ] ) ] [ mStr "#666" ] ]
+                << color
+                    [ mCondition (prTest (expr "datum.weight == 'b'"))
+                        [ mStr "black" ]
+                        [ mStr "#666" ]
+                    ]
 
         textSpec =
             asSpec

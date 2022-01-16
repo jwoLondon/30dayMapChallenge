@@ -22,9 +22,9 @@ I have avoided choropleth mapping so far, but would like to include at least one
 
 ## Data Preparation
 
-1. Gastner boundaries from [github.com/deldersveld/topojson](https://github.com/deldersveld/topojson)
+1.  Gastner boundaries from [github.com/deldersveld/topojson](https://github.com/deldersveld/topojson)
 
-2. [Election results](https://en.wikipedia.org/wiki/List_of_United_States_presidential_election_results_by_state), converted into CSV file selecting 1972-2016 elections.
+2.  [Election results](https://en.wikipedia.org/wiki/List_of_United_States_presidential_election_results_by_state), converted into CSV file selecting 1972-2016 elections.
 
 Location of generated files:
 

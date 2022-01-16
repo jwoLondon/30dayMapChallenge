@@ -22,15 +22,15 @@ I like the idea that showing a polar azimuthal projection allows pie charts to b
 
 ## Data Preparation
 
-1. Downloaded [Global country file including Antarctica](https://github.com/johan/world.geo.json/blob/master/countries.geo.json).
-2. In mapshaper, filter only Antartica and save as topoJSON:
+1.  Downloaded [Global country file including Antarctica](https://github.com/johan/world.geo.json/blob/master/countries.geo.json).
+2.  In mapshaper, filter only Antarctica and save as topoJSON:
 
-   ```sh
-   filter 'FID == "ATA"'
-   o format=topojson drop-table antarctica.json
-   ```
+    ```sh
+    filter 'FID == "ATA"'
+    o format=topojson drop-table antarctica.json
+    ```
 
-3. Territorial zones copied directly from the [Wikipedia page](https://en.wikipedia.org/wiki/Territorial_claims_in_Antarctica#Antarctic_territorial_claims) and stored inline in the Vega-Lite spec.
+3.  Territorial zones copied directly from the [Wikipedia page](https://en.wikipedia.org/wiki/Territorial_claims_in_Antarctica#Antarctic_territorial_claims) and stored inline in the Vega-Lite spec.
 
 Location of generated files:
 
@@ -94,7 +94,7 @@ toGeojson zones =
     geoFeatureCollection (List.map geom zones)
 ```
 
-This allows us to overlay the wedges representing territorial claims on the Antartica map:
+This allows us to overlay the wedges representing territorial claims on the Antarctica map:
 
 ```elm {l v}
 antarcticaZones : Spec

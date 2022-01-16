@@ -22,15 +22,15 @@ We've seen a trend in increasing use of the rhetoric of isolationism in several 
 
 ## Data Preparation
 
-1. For US and North Korea examples used [worldCountries.json](https://gicentre.github.io/data/geoTutorials/world-110m.json) for country outlines.
+1.  For US and North Korea examples used [worldCountries.json](https://gicentre.github.io/data/geoTutorials/world-110m.json) for country outlines.
 
-2. For England (as opposed to GB or the UK), used [ukConstituencies.json](https://github.com/gicentre/data/blob/master/uk/ukConstituencies.json). In map shaper filtered for non Scottish and Welsh regions and then dissolving boundaries:
+2.  For England (as opposed to GB or the UK), used [ukConstituencies.json](https://github.com/gicentre/data/blob/master/uk/ukConstituencies.json). In map shaper filtered for non Scottish and Welsh regions and then dissolving boundaries:
 
-   ```sh
-   filter 'eer16nm != "Scotland" && eer16nm != "Wales"'
-   dissolve
-   o format=topojson england.json
-   ```
+    ```sh
+    filter 'eer16nm != "Scotland" && eer16nm != "Wales"'
+    dissolve
+    o format=topojson england.json
+    ```
 
 Location of generated files:
 

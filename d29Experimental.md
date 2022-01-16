@@ -22,9 +22,11 @@ Contour lines represented as spines or similar parametric function, but with sig
 
 ## Data Preparation
 
-1. Source images for contour threading converted to black and white with high contrast (using MacOS image preview, but any image package will do).
-2. Blob detection of grey-level boundaries via [this Processing library](http://www.v3ga.net/processing/BlobDetection/).
-3. Contour simplification written in Java (Douglas Peucker) to output simplified contour vertices.
+1.  Source images for contour threading converted to black and white with high contrast (using MacOS image preview, but any image package will do).
+
+2.  Blob detection of grey-level boundaries via [this Processing library](http://www.v3ga.net/processing/BlobDetection/).
+
+3.  Contour simplification written in Java (Douglas Peucker) to output simplified contour vertices.
 
 Location of generated files:
 
@@ -100,7 +102,7 @@ experiment1 tension =
         [ width 200
         , height 200
         , title ("spline tension: " ++ String.fromFloat tension)
-            [ tiOffset -20, tiAnchor anEnd, tiFontWeight Normal, tiFont "Fjalla One" ]
+            [ tiOffset -20, tiAnchor anEnd, tiFontWeight fwNormal, tiFont "Fjalla One" ]
         , simpleData []
         , enc []
         , line
@@ -167,7 +169,7 @@ experiment2 tension =
             , maClip True
             ]
         , title ("spline tension: " ++ String.fromFloat tension)
-            [ tiOffset -20, tiAnchor anEnd, tiFontWeight Normal, tiFont "Fjalla One" ]
+            [ tiOffset -20, tiAnchor anEnd, tiFontWeight fwNormal, tiFont "Fjalla One" ]
         ]
 ```
 

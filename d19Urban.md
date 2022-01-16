@@ -26,64 +26,64 @@ What recorded features most characterise urban areas? Browse [OSM map features](
 
 Use overpass to select cemeteries, crematoria, etc. This allows larger areas to be considered without having to download entire OSM dataset for a region.
 
-1. Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu).
+1.  Download all cemeteries, graveyards and crematoria in the UK, via the [Overpass API](https://overpass-turbo.eu).
 
-   ```sh
-   ( area[name="United Kingdom"]; )->.a;
-   way(area.a)[landuse=cemetery];
-   (._;>;);
-   out;
-   ```
+    ```sh
+    ( area[name="United Kingdom"]; )->.a;
+    way(area.a)[landuse=cemetery];
+    (._;>;);
+    out;
+    ```
 
-   ```sh
-   ( area[name="United Kingdom"]; )->.a;
-   way(area.a)[amenity=grave_yard];
-   (._;>;);
-   out;
-   ```
+    ```sh
+    ( area[name="United Kingdom"]; )->.a;
+    way(area.a)[amenity=grave_yard];
+    (._;>;);
+    out;
+    ```
 
-   ```sh
-   ( area[name="United Kingdom"]; )->.a;
-   way(area.a)[amenity=crematorium];
-   (._;>;);
-   out;
-   ```
+    ```sh
+    ( area[name="United Kingdom"]; )->.a;
+    way(area.a)[amenity=crematorium];
+    (._;>;);
+    out;
+    ```
 
-2. Convert the overpass OSM (XML) files to geoJSON:
+2.  Convert the overpass OSM (XML) files to geoJSON:
 
-   ```sh
-   ogr2ogr -f GeoJSON ukCemeteries.geojson ukCemeteries.osm multipolygons
-   ogr2ogr -f GeoJSON ukCrematoria.geojson ukCrematoria.osm multipolygons
-   ogr2ogr -f GeoJSON ukGraveYards.geojson ukGraveyards.osm multipolygons
-   ```
+    ```sh
+    ogr2ogr -f GeoJSON ukCemeteries.geojson ukCemeteries.osm multipolygons
+    ogr2ogr -f GeoJSON ukCrematoria.geojson ukCrematoria.osm multipolygons
+    ogr2ogr -f GeoJSON ukGraveYards.geojson ukGraveyards.osm multipolygons
+    ```
 
-3. Use mapshaper to convert to point file storing the area of each land parcel:
+3.  Use mapshaper to convert to point file storing the area of each land parcel:
 
-   ukCemeteries.geojson:
+    ukCemeteries.geojson:
 
-   ```sh
-      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-      filter-fields longitude,latitude,area
-      o ukCemeteries.csv
-   ```
+    ```sh
+    each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+    filter-fields longitude,latitude,area
+    o ukCemeteries.csv
+    ```
 
-   ukCrematoria.geojson:
+    ukCrematoria.geojson:
 
-   ```sh
-      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-      filter-fields longitude,latitude,area
-      o ukCrematoria.csv
-   ```
+    ```sh
+    each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+    filter-fields longitude,latitude,area
+    o ukCrematoria.csv
+    ```
 
-   ukGraveyards.geojson:
+    ukGraveyards.geojson:
 
-   ```sh
-      each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
-      filter-fields longitude,latitude,area
-      o ukGraveyards.csv
-   ```
+    ```sh
+    each 'longitude=this.centroidX, latitude=this.centroidY, area=this.area'
+    filter-fields longitude,latitude,area
+    o ukGraveyards.csv
+    ```
 
-4. Concatenate all three csv files providing an additional column identifying the type (`cemetery`, `graveyard` and `crematorium`), stored in `ukDead.csv`
+4.  Concatenate all three csv files providing an additional column identifying the type (`cemetery`, `graveyard` and `crematorium`), stored in `ukDead.csv`
 
 Location of generated files:
 
@@ -147,7 +147,7 @@ citiesOfTheDead =
         , title "Cities\nof the Dead"
             [ tiFont "Fredericka the Great"
             , tiFontSize 50
-            , tiFontWeight Normal
+            , tiFontWeight fwNormal
             , tiOrient siTop
             , tiAnchor anEnd
             , tiOffset -150

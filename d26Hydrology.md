@@ -24,39 +24,39 @@ Could show flow accumulation lines generated from LandSerf. Can produce pleasing
 
 ## Data Preparation
 
-1. Flow lines generated in [LandSerf](http://www.landserf.org) from OS50 Terrain DEM of SD and NY tiles:
+1.  Flow lines generated in [LandSerf](http://www.landserf.org) from OS50 Terrain DEM of SD and NY tiles:
 
-   - clip to SW Lakes District region - (312875,500025) to (329325,514825)
-   - pit removal with channelling
-   - flow accumulation with vectors selected, minimum flow magnitude of 2, 70% sample
-   - saved as shapefile
+    - clip to SW Lakes District region - (312875,500025) to (329325,514825)
+    - pit removal with channelling
+    - flow accumulation with vectors selected, minimum flow magnitude of 2, 70% sample
+    - saved as shapefile
 
-2. Major streamlines imported from Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html), clipped in mapshaper and saved as topoJSON:
+2.  Major streamlines imported from Ordnance Survey [OpenRivers dataset](https://www.ordnancesurvey.co.uk/opendatadownload/products.html), clipped in mapshaper and saved as topoJSON:
 
-   ```sh
-   clip bbox=313545,500650,328710,514250
-   o format=topojson swLakeDistrictStreams.json
-   ```
+    ```sh
+    clip bbox=313545,500650,328710,514250
+    o format=topojson swLakeDistrictStreams.json
+    ```
 
-3. Relief shading generated in LandSerf using same clipped DEM as step 1. Saved as point file. Add `easting,northing,relief` header to file and replace tabs with commas to created `swLakeDistrictRelief.csv`.
+3.  Relief shading generated in LandSerf using same clipped DEM as step 1. Saved as point file. Add `easting,northing,relief` header to file and replace tabs with commas to created `swLakeDistrictRelief.csv`.
 
-4. Import flow vector shapefile into mapshaper, simplify and clip to slightly smaller region to remove edge effects:
+4.  Import flow vector shapefile into mapshaper, simplify and clip to slightly smaller region to remove edge effects:
 
-   ```sh
-   clip bbox=313545,500650,328710,514250
-   simplify 98%
-   clean
-   o format=topojson swLakeDistrictFlows.json
-   ```
+    ```sh
+    clip bbox=313545,500650,328710,514250
+    simplify 98%
+    clean
+    o format=topojson swLakeDistrictFlows.json
+    ```
 
-5. Wastwater lake boundary extracted from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC), tile NY. Shapefiles `SurfaceWater_Area` loaded into mapshaper, filtered, clipped and saved as topojson:
+5.  Wastwater lake boundary extracted from [OS Vectormap District](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#VMDVEC), tile NY. Shapefiles `SurfaceWater_Area` loaded into mapshaper, filtered, clipped and saved as topojson:
 
-   ```sh
-   filter ID=='37B40360-928E-402B-9F1D-3A46BCCF7501'
-   clean
-   clip bbox=313545,500650,328710,514250
-   o format=topojson lakes.json
-   ```
+    ```sh
+    filter ID=='37B40360-928E-402B-9F1D-3A46BCCF7501'
+    clean
+    clip bbox=313545,500650,328710,514250
+    o format=topojson lakes.json
+    ```
 
 Location of generated files:
 
@@ -162,7 +162,7 @@ flowMap =
         , title "Surface Flow Lines"
             [ tiFontSize 48
             , tiFont "Cinzel"
-            , tiFontWeight Normal
+            , tiFontWeight fwNormal
             , tiColor waterColour
             , tiOrient siBottom
             , tiOffset 20

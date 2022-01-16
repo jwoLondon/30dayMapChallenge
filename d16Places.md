@@ -24,13 +24,13 @@ Could map the results of the autocomplete suggestions following Google queries _
 
 ## Data Preparation
 
-1. World basemap is '1981' from [project linework](http://www.projectlinework.org) that provides not only a generalised set of boundaries, but various labelling and colouring attributes as a well as a country area measure which can be used for changing font size. Converted into topoJSON via mapshaper with `o format=topojson world1981.json`.
+1.  World basemap is '1981' from [project linework](http://www.projectlinework.org) that provides not only a generalised set of boundaries, but various labelling and colouring attributes as a well as a country area measure which can be used for changing font size. Converted into topoJSON via mapshaper with `o format=topojson world1981.json`.
 
-2. Coastal outline created from `world1981.json` in mapshaper with `dissolve` and `o format=topojson drop-table coastlines1981.json`
+2.  Coastal outline created from `world1981.json` in mapshaper with `dissolve` and `o format=topojson drop-table coastlines1981.json`
 
-3. Label positions generated from `world1981.json` centroids in mapshaper with `each 'longitude=this.x, latitude=this.y' -o 'countryCentroids.csv'`
+3.  Label positions generated from `world1981.json` centroids in mapshaper with `each 'longitude=this.x, latitude=this.y' -o 'countryCentroids.csv'`
 
-4. Data on Google autocompletion scraped in 2013 from a now defunct API, but documented in the paper linked to in the [Zeitgeist Borders project](https://zeitgeist-borders.antonomase.fr/?q=is%20New%20Zealand). Autocompletion data stored in `complete.csv`
+4.  Data on Google autocompletion scraped in 2013 from a now defunct API, but documented in the paper linked to in the [Zeitgeist Borders project](https://zeitgeist-borders.antonomase.fr/?q=is%20New%20Zealand). Autocompletion data stored in `complete.csv`
 
 Location of generated files:
 
@@ -80,7 +80,8 @@ worldPlaces =
         countryEnc =
             encoding
                 << color
-                    [ mDataCondition [ ( expr "datum.properties.ISO_A3 === 'ATA'", [ mStr "white" ] ) ]
+                    [ mCondition (prTest (expr "datum.properties.ISO_A3 === 'ATA'"))
+                        [ mStr "white" ]
                         [ mName "properties.MAPCOLOR7", mScale [ scScheme "pastel2" [ 0.1 ] ], mLegend [] ]
                     ]
 

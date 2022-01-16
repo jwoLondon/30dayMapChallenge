@@ -22,28 +22,28 @@ How green is my borough? In a literal sense - proportion of land that is accessi
 
 ## Data Preparation
 
-1. Create `londonBoroughs.json` from [londonWards-2018.zip](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london))
+1.  Create `londonBoroughs.json` from [londonWards-2018.zip](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london))
 
-2. Reproject [open Greenspace shapefiles](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP)) in mapshaper to latlong WGS84, clip to Greater London area, extract the greenspace function, store each polygon's area in hectares, convert to centroid points and save as a topoJSON file:
+2.  Reproject [open Greenspace shapefiles](https://www.ordnancesurvey.co.uk/opendatadownload/products.html#OPGRSP)) in mapshaper to latlong WGS84, clip to Greater London area, extract the greenspace function, store each polygon's area in hectares, convert to centroid points and save as a topoJSON file:
 
-   ```sh
-   mapshaper GB_GreenspaceSite.shp \
-     -proj +init=EPSG:4326 \
-     -clip londonBoroughs.json \
-     -filter-fields id,function \
-     -each 'greenArea=this.area/10000' \
-     -points \
-     -o format=topojson londonGreenCentroids.json
-   ```
+    ```sh
+    mapshaper GB_GreenspaceSite.shp \
+    -proj +init=EPSG:4326 \
+    -clip londonBoroughs.json \
+    -filter-fields id,function \
+    -each 'greenArea=this.area/10000' \
+    -points \
+    -o format=topojson londonGreenCentroids.json
+    ```
 
-3. Aggregate greenspace areas spatially grouping by borough and store total borough GSSCode and green area in a csv file:
+3.  Aggregate greenspace areas spatially grouping by borough and store total borough GSSCode and green area in a csv file:
 
-   ```sh
-   mapshaper londonBoroughs.json \
-    -join londonGreenCentroids.json fields= sum-fields=greenArea \
-    -filter-fields GSSCode,area,greenArea \
-    -o greenBoroughs.csv
-   ```
+    ```sh
+    mapshaper londonBoroughs.json \
+     -join londonGreenCentroids.json fields= sum-fields=greenArea \
+     -filter-fields GSSCode,area,greenArea \
+     -o greenBoroughs.csv
+    ```
 
 Location of generated files:
 
