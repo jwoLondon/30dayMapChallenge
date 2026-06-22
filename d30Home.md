@@ -117,6 +117,7 @@ profiles =
                 << position Y
                     [ pName "scaledElev"
                     , pQuant
+                    , pStack stNone
                     , pScale [ scDomain (doNums [ 0, 500 ]) ]
                     , pAxis []
                     ]
